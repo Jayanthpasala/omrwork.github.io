@@ -3,159 +3,366 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Truth Privacy Policy</title>
-<meta name="description" content="Privacy policy for Truth, the barcode scanner app that shows what's really inside food, supplements, medicines and more.">
+<title>Truth: See what's really inside</title>
+<meta name="description" content="Truth scans barcodes and QR codes to show a clear verdict on food, the ingredients in cosmetics, and batch and expiry on medicines. Free, no account.">
+<meta name="theme-color" content="#0B0B0C">
+<meta property="og:title" content="Truth: See what's really inside">
+<meta property="og:description" content="Scan any barcode. Get the verdict, the ingredients and the expiry, in about a second.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230B0B0C'/%3E%3Ccircle cx='28' cy='28' r='15' fill='none' stroke='%23D4FF3A' stroke-width='5.5'/%3E%3Cpath d='M39 39 L50 50' stroke='%23D4FF3A' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M21 28.5 L26.5 33.5 L35.5 23' fill='none' stroke='%23fff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0B0B0C; --paper: #F2F2EF; --card: #FFFFFF; --muted: #5C5C58; --line: #E2E2DC;
-    --volt: #D4FF3A; --link: #2B4A6B;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ink: #F2F2EF; --paper: #0B0B0C; --card: #17171A; --muted: #A4A49E; --line: #2A2A2E; --link: #B9D2EE;
-    }
-  }
-  :root[data-theme="dark"] {
-    --ink: #F2F2EF; --paper: #0B0B0C; --card: #17171A; --muted: #A4A49E; --line: #2A2A2E; --link: #B9D2EE;
+    --ink: #0B0B0C; --ink-2: #141416; --glass: #1C1C20; --paper: #F2F2EF; --card: #FFFFFF;
+    --volt: #D4FF3A; --red: #FF453A; --green: #30D158; --amber: #FF9F0A; --blue: #5E8BC4;
+    --muted: #5C5C58; --line: #E2E2DC; --on-ink-2: rgba(242,242,239,.66);
+    --pad: clamp(20px, 5vw, 64px); --max: 1320px;
+    --radius: 28px;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0; background: var(--paper); color: var(--ink);
-    font-family: Figtree, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 17px; line-height: 1.6;
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Figtree, system-ui, sans-serif; font-size: 17px; line-height: 1.55; overflow-x: hidden; }
+  a { color: inherit; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+
+  /* ---------- nav ---------- */
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(11,11,12,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.06); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--paper); }
+  .brand svg { width: 36px; height: 36px; flex: none; }
+  .wordmark { font-weight: 900; font-size: 26px; letter-spacing: -.03em; line-height: 1; }
+  .wordmark b { color: var(--volt); font-weight: 900; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a.link { color: var(--on-ink-2); text-decoration: none; font-weight: 500; font-size: 15px; transition: color .2s; }
+  .nav-links a.link:hover { color: var(--paper); }
+  .chip-soon { display: inline-flex; align-items: center; gap: 8px; background: var(--volt); color: var(--ink); font-weight: 800; font-size: 14px; padding: 10px 16px; border-radius: 999px; white-space: nowrap; }
+  @media (max-width: 720px) { .nav-links a.link { display: none; } .chip-soon { font-size: 13px; padding: 8px 12px; } }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; background: var(--ink); color: var(--paper); overflow: hidden; isolation: isolate; }
+  .hero::before { /* volt glow */
+    content: ""; position: absolute; inset: auto -10% -40% 35%; height: 90%; z-index: -1;
+    background: radial-gradient(closest-side, rgba(212,255,58,.20), transparent 70%); filter: blur(10px);
   }
-  .hero { background: #0B0B0C; color: #F2F2EF; padding: 48px 16px 40px; }
-  .wrap { max-width: 760px; margin: 0 auto; }
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .mark { width: 48px; height: 48px; border-radius: 14px; background: #1E1E22; display: grid; place-items: center; flex: none; }
-  .wordmark { font-weight: 800; font-size: 28px; letter-spacing: -0.5px; }
-  .wordmark span { color: var(--volt); }
-  h1 { font-weight: 800; font-size: clamp(34px, 7vw, 52px); line-height: 1.05; letter-spacing: -1px; margin: 28px 0 10px; }
-  .hero p { margin: 0; color: rgba(242, 242, 239, 0.7); }
-  main { padding: 28px 16px 64px; }
-  .card { background: var(--card); border-radius: 24px; padding: 24px; margin-bottom: 16px; border: 1px solid var(--line); }
-  h2 { font-weight: 800; font-size: 24px; letter-spacing: -0.3px; margin: 0 0 12px; line-height: 1.2; }
-  h3 { font-weight: 600; font-size: 18px; margin: 20px 0 6px; }
-  p, li { margin: 0 0 10px; }
-  ul { padding-left: 22px; margin: 0; }
-  a { color: var(--link); text-underline-offset: 3px; overflow-wrap: anywhere; }
-  .summary li::marker { color: var(--ink); }
-  .table { width: 100%; }
-  .row { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 14px 0; border-top: 1px solid var(--line); }
-  .row:first-child { border-top: 0; padding-top: 0; }
-  .row b { font-weight: 600; }
-  .row .why { color: var(--muted); font-size: 15px; }
-  @media (min-width: 640px) {
-    .row { grid-template-columns: 180px 1fr; column-gap: 20px; }
-    .row .why { grid-column: 2; }
+  .hero::after { /* grain */
+    content: ""; position: absolute; inset: 0; z-index: -1; opacity: .07; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .muted { color: var(--muted); font-size: 15px; }
-  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 0 16px 40px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 48px; padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(64px, 9vw, 128px); }
+  .badge { display: inline-flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid rgba(255,255,255,.08); color: var(--paper); font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--volt); box-shadow: 0 0 0 4px rgba(212,255,58,.18); flex: none; }
+  h1 { font-size: clamp(54px, 9.4vw, 138px); line-height: .9; letter-spacing: -.055em; font-weight: 900; margin: 26px 0 26px; }
+  h1 .hl { position: relative; white-space: nowrap; }
+  h1 .hl::after { content: ""; position: absolute; left: .02em; right: .04em; bottom: .06em; height: .12em; background: var(--volt); border-radius: 999px; transform-origin: left; animation: draw 1s .7s cubic-bezier(.2,.8,.2,1) both; z-index: -1; }
+  .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--on-ink-2); max-width: 34ch; margin: 0 0 34px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 800 17px/1 Figtree, sans-serif; padding: 18px 26px; border-radius: 999px; text-decoration: none; transition: transform .15s ease, background .2s; }
+  .btn:active { transform: scale(.97); }
+  .btn-volt { background: var(--volt); color: var(--ink); }
+  .btn-volt:hover { background: #E4FF7A; }
+  .btn-glass { background: var(--glass); color: var(--paper); border: 1px solid rgba(255,255,255,.1); }
+  .btn-glass:hover { background: #26262B; }
+  .btn-ink { background: var(--ink); color: var(--paper); }
+  .btn-ink:hover { background: #26262B; }
+  .play-note { margin: 16px 0 0; font-size: 14px; color: rgba(242,242,239,.45); }
+
+  /* ---------- phone ---------- */
+  .stage { position: relative; display: grid; place-items: center; min-height: 600px; }
+  .barcode { position: absolute; width: 78%; height: 150px; top: 44%; left: -6%; opacity: .16; transform: rotate(-8deg);
+    background: repeating-linear-gradient(90deg, #fff 0 3px, transparent 3px 7px, #fff 7px 8px, transparent 8px 13px, #fff 13px 18px, transparent 18px 21px); border-radius: 6px; }
+  .phone { position: relative; width: 300px; height: 620px; border-radius: 48px; background: #000; padding: 9px; transform: rotate(4deg);
+    box-shadow: 0 0 0 1.5px rgba(255,255,255,.14), 0 50px 120px -20px rgba(0,0,0,.8), 0 0 80px -20px rgba(212,255,58,.25);
+    animation: float 7s ease-in-out infinite; }
+  .screen { position: relative; height: 100%; border-radius: 40px; overflow: hidden; background: var(--paper); color: var(--ink); padding: 44px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+  .notch { position: absolute; top: 12px; left: 50%; width: 92px; height: 24px; margin-left: -46px; border-radius: 20px; background: #000; z-index: 3; }
+  .p-hero { border-radius: 26px; padding: 12px 12px 14px; text-align: center; background: linear-gradient(180deg, #FFE1DC, var(--paper)); }
+  .p-photo { width: 96px; height: 96px; margin: 2px auto 10px; border-radius: 26px; background: #fff; display: grid; place-items: center; box-shadow: 0 14px 30px -10px rgba(255,69,58,.45); }
+  .p-name { font-weight: 900; font-size: 19px; letter-spacing: -.02em; line-height: 1.1; }
+  .p-meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .p-pills { display: flex; gap: 6px; justify-content: center; margin-top: 9px; }
+  .p-pill { font-size: 11px; font-weight: 700; background: #fff; border-radius: 999px; padding: 5px 9px; display: inline-flex; gap: 5px; align-items: center; }
+  .p-pill i { width: 6px; height: 6px; border-radius: 50%; background: var(--red); display: inline-block; }
+  .p-card { background: #fff; border-radius: 22px; padding: 12px; }
+  .verdict { display: flex; align-items: center; gap: 12px; }
+  .ring { --p: 20; width: 58px; height: 58px; border-radius: 50%; flex: none; display: grid; place-items: center; position: relative;
+    background: conic-gradient(var(--red) calc(var(--p) * 1%), rgba(255,69,58,.15) 0); animation: ring 1.4s .6s cubic-bezier(.2,.8,.2,1) both; }
+  .ring::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: #fff; }
+  .ring span { position: relative; font-weight: 900; font-size: 26px; color: var(--red); }
+  .v-title { font-weight: 900; font-size: 16px; color: #B3261E; letter-spacing: -.01em; line-height: 1.15; }
+  .v-sub { font-size: 11px; color: var(--muted); line-height: 1.35; margin-top: 3px; }
+  .meters h4 { margin: 0 0 8px; font-size: 14px; font-weight: 900; display: flex; justify-content: space-between; }
+  .meters h4 span { font-weight: 500; color: var(--muted); font-size: 12px; }
+  .m-row { margin-top: 9px; }
+  .m-top { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 600; }
+  .m-top b { font-weight: 900; }
+  .m-bar { height: 6px; border-radius: 6px; background: var(--line); margin-top: 5px; overflow: hidden; }
+  .m-bar i { display: block; height: 100%; border-radius: 6px; transform-origin: left; animation: grow 1.2s cubic-bezier(.2,.8,.2,1) both; }
+  .scanline { position: absolute; left: 14px; right: 14px; height: 3px; border-radius: 3px; background: var(--volt); z-index: 4;
+    box-shadow: 0 0 18px 4px rgba(212,255,58,.55); animation: sweep 3.2s ease-in-out infinite; }
+  .float-card { position: absolute; z-index: 5; background: var(--ink-2); border: 1px solid rgba(255,255,255,.1); color: var(--paper); border-radius: 20px; padding: 14px 16px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
+  .fc-expiry { left: -8%; bottom: 13%; transform: rotate(-5deg); animation: float 8s 1s ease-in-out infinite; }
+  .fc-expiry small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: rgba(242,242,239,.55); }
+  .fc-expiry strong { display: block; font-size: 34px; font-weight: 900; letter-spacing: -.03em; color: var(--volt); line-height: 1.05; }
+  .fc-expiry em { font-style: normal; font-size: 12px; color: rgba(242,242,239,.6); }
+  .fc-code { right: -6%; top: 10%; transform: rotate(6deg); font-size: 13px; animation: float 9s .4s ease-in-out infinite; }
+  .fc-code b { color: var(--volt); }
+
+  /* ---------- ticker ---------- */
+  .ticker { background: var(--volt); color: var(--ink); overflow: hidden; border-block: 1px solid var(--ink); }
+  .ticker-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  .ticker-track span { display: inline-flex; align-items: center; gap: 18px; padding: 18px 0 18px 18px; font-weight: 800; font-size: 18px; white-space: nowrap; letter-spacing: -.01em; }
+  .ticker-track span::after { content: "✳"; font-size: 16px; }
+
+  /* ---------- features (bento) ---------- */
+  section { padding: clamp(72px, 10vw, 128px) 0 0; }
+  h2 { font-size: clamp(38px, 6vw, 76px); line-height: .96; letter-spacing: -.045em; font-weight: 900; margin: 0 0 clamp(32px, 4vw, 56px); max-width: 16ch; }
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+  .tile { background: var(--card); border-radius: var(--radius); padding: clamp(24px, 3vw, 36px); position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 18px 40px -24px rgba(0,0,0,.18); transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
+  .tile:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -28px rgba(0,0,0,.28); }
+  .tile h3 { font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -.03em; line-height: 1.05; margin: 0 0 12px; font-weight: 900; }
+  .tile p { margin: 0; color: var(--muted); max-width: 42ch; }
+  .t-verdict { grid-column: span 4; background: var(--ink); color: var(--paper); min-height: 380px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+  .t-verdict p { color: var(--on-ink-2); }
+  .grades { display: flex; gap: 8px; align-self: start; }
+  .grades span { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; font-weight: 900; font-size: 28px; color: var(--ink); }
+  .t-med { grid-column: span 2; background: #FFE3DF; }
+  .t-med .exp { margin-top: 26px; background: var(--ink); color: var(--paper); border-radius: 20px; padding: 16px 18px; }
+  .t-med .exp small { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: rgba(242,242,239,.55); }
+  .t-med .exp strong { display: block; font-size: 36px; font-weight: 900; color: var(--red); letter-spacing: -.03em; line-height: 1.1; }
+  .t-ingr { grid-column: span 3; background: #E3ECF6; }
+  .codes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .codes span { background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; }
+  .codes span b { font-family: "JetBrains Mono", monospace; font-weight: 700; margin-right: 6px; }
+  .t-private { grid-column: span 3; background: #DFF5E6; }
+  .lock { position: absolute; right: -20px; bottom: -30px; font-size: 180px; line-height: 1; opacity: .12; font-weight: 900; }
+  .t-kinds { grid-column: span 6; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .kinds { display: flex; flex-wrap: wrap; gap: 10px; }
+  .kinds span { border: 1.5px solid var(--ink); border-radius: 999px; padding: 10px 18px; font-weight: 700; }
+  @media (max-width: 960px) {
+    .t-verdict, .t-med, .t-ingr, .t-private, .t-kinds { grid-column: span 6; }
+    .t-verdict { grid-template-columns: 1fr; min-height: 0; }
+  }
+
+  /* ---------- steps ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: s; }
+  .step { border-top: 2px solid var(--ink); padding-top: 22px; }
+  .step .n { font-size: clamp(64px, 7vw, 104px); font-weight: 900; line-height: .9; letter-spacing: -.06em; -webkit-text-stroke: 2px var(--ink); color: transparent; margin-bottom: 18px; transition: color .3s; }
+  .step:hover .n { color: var(--volt); }
+  .step h3 { font-size: 26px; letter-spacing: -.03em; margin: 0 0 8px; font-weight: 900; }
+  .step p { margin: 0; color: var(--muted); max-width: 34ch; }
+  @media (max-width: 820px) { .steps { grid-template-columns: 1fr; gap: 36px; } }
+
+  /* ---------- privacy band ---------- */
+  .band { margin-top: clamp(72px, 10vw, 128px); }
+  .band-card { background: var(--volt); border-radius: 40px; padding: clamp(32px, 5vw, 72px); display: grid; grid-template-columns: 1.3fr auto; gap: 32px; align-items: end; position: relative; overflow: hidden; }
+  .band-card h2 { margin-bottom: 18px; max-width: 12ch; }
+  .band-card p { margin: 0; max-width: 52ch; font-size: 18px; }
+  .band-card .big { position: absolute; right: -2%; top: -18%; font-size: clamp(160px, 22vw, 320px); font-weight: 900; letter-spacing: -.08em; line-height: 1; opacity: .08; pointer-events: none; }
+  @media (max-width: 820px) { .band-card { grid-template-columns: 1fr; } }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--ink); color: var(--paper); margin-top: clamp(72px, 10vw, 128px); padding: 56px 0 40px; }
+  .f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
+  .f-big { font-size: clamp(56px, 12vw, 180px); font-weight: 900; letter-spacing: -.06em; line-height: .85; margin: 48px 0 0; color: var(--paper); }
+  .f-big b { color: var(--volt); }
+  .f-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+  .f-links a { color: var(--on-ink-2); text-decoration: none; font-weight: 500; }
+  .f-links a:hover { color: var(--paper); }
+  .f-small { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; color: rgba(242,242,239,.4); font-size: 14px; }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .hero .up { animation: up .9s cubic-bezier(.2,.8,.2,1) both; }
+  .hero .up:nth-child(2) { animation-delay: .08s; } .hero .up:nth-child(3) { animation-delay: .16s; } .hero .up:nth-child(4) { animation-delay: .24s; } .hero .up:nth-child(5) { animation-delay: .32s; }
+
+  @keyframes up { from { opacity: 0; transform: translateY(28px); } }
+  @keyframes draw { from { transform: scaleX(0); } }
+  @keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+  @keyframes sweep { 0%,100% { top: 60px; } 50% { top: calc(100% - 30px); } }
+  @keyframes ring { from { --p: 0; } }
+  @keyframes grow { from { transform: scaleX(0); } }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @property --p { syntax: "<number>"; inherits: false; initial-value: 20; }
+
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .stage { min-height: 560px; }
+    .fc-expiry { left: 0; } .fc-code { right: 0; }
+  }
+  @media (max-width: 420px) {
+    .phone { transform: rotate(3deg) scale(.9); }
+    .fc-expiry { left: -4px; bottom: 6%; } .fc-code { right: -4px; top: 4%; }
+    .btn { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .scanline { display: none; }
+  }
 </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="brand">
-        <div class="mark" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="27.5" cy="27.5" r="19.8" stroke="#D4FF3A" stroke-width="6.7"/>
-            <line x1="43.3" y1="43.3" x2="57.6" y2="57.6" stroke="#D4FF3A" stroke-width="8.6"/>
-            <path d="M18 27.9 L25.2 34.4 L37.4 20.8" stroke="#FFFFFF" stroke-width="5.4"/>
-          </svg>
-        </div>
-        <div class="wordmark">truth<span>.</span></div>
-      </div>
-      <h1>Privacy Policy</h1>
-      <p>Last updated: 19 September 2026</p>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Truth home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#1C1C20"/><circle cx="28" cy="28" r="15" fill="none" stroke="#D4FF3A" stroke-width="5.5"/><path d="M39 39 L50 50" stroke="#D4FF3A" stroke-width="7" stroke-linecap="round"/><path d="M21 28.5 L26.5 33.5 L35.5 23" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="wordmark">truth<b>.</b></span>
+    </a>
+    <div class="nav-links">
+      <a class="link" href="#how">How it works</a>
+      <a class="link" href="privacy.html">Privacy</a>
+      <span class="chip-soon"><span class="dot" style="background:var(--ink);box-shadow:none"></span>Soon on Google Play</span>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main class="wrap">
-    <section class="card">
-      <p>Truth ("the app") is a barcode and QR code scanner for Android, published by Truth ("we"). This policy explains what data the app handles and why.</p>
-      <p>Questions? Contact us at <a href="mailto:omrwor41@gmail.com">omrwor41@gmail.com</a>.</p>
-    </section>
-
-    <section class="card summary">
-      <h2>In short</h2>
-      <ul>
-        <li>There is <b>no account and no login</b>. We never ask for your name, email or other personal details.</li>
-        <li>We <b>do not run a server</b> and receive no data from the app.</li>
-        <li>Your <b>scan history stays on your phone</b>. It is not uploaded and is excluded from cloud backups and device transfers.</li>
-        <li>Barcode numbers are sent to <b>Open Food Facts</b> to look up products.</li>
-        <li>The app is free and shows <b>ads from Google AdMob</b>, which collects data as described below. There are no purchases or subscriptions.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Data the app handles</h2>
-      <div class="table">
-        <div class="row"><b>Camera images</b><span>Processed on your phone to read barcodes and QR codes. Never stored or sent anywhere.</span><span class="why">To scan codes</span></div>
-        <div class="row"><b>Photos of pack dates</b><span>If you take or choose a photo of a pack's dates, its text is read on your phone. The photo is deleted right after reading and never uploaded. The dates you confirm are saved only in your on-phone history.</span><span class="why">To show manufacturing and expiry dates</span></div>
-        <div class="row"><b>Barcode numbers</b><span>Sent to the Open Food Facts API (openfoodfacts.org and its sister databases).</span><span class="why">To look up product information</span></div>
-        <div class="row"><b>QR and Data Matrix contents</b><span>Read on your phone. Only a product number found in the code is sent to Open Food Facts. Batch and expiry details are saved only on your phone. Links open in your browser only if you tap Open. Payment codes are never opened.</span><span class="why">To show product, batch and expiry details</span></div>
-        <div class="row"><b>Web pages from QR codes</b><span>Only if you tap "Show full details": the app loads the page the code links to, as a browser would (so that website sees your IP address), and reads the product details on your phone.</span><span class="why">To show medicine and product details</span></div>
-        <div class="row"><b>Scan history</b><span>Product name, brand, scores and time scanned, stored only on your phone.</span><span class="why">So you can see earlier scans, even offline</span></div>
-        <div class="row"><b>Product photos</b><span>Downloaded from images.openfoodfacts.org and kept in the app's cache on your phone for up to 30 days.</span><span class="why">So photos appear instantly next time</span></div>
-        <div class="row"><b>Advertising data</b><span>Advertising ID, IP address, device information and ad interactions, collected by Google AdMob.</span><span class="why">To show and measure ads and prevent fraud</span></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge up"><span class="dot"></span>Free · No account · Scans stay on your phone</span>
+      <h1 class="up">See what's <span class="hl">really</span> inside.</h1>
+      <p class="lede up">Scan any barcode or QR code. Get a straight verdict on food, the ingredients in cosmetics, and the batch and expiry on medicines, in about a second.</p>
+      <div class="ctas up">
+        <a class="btn btn-volt" href="#features">See what it shows ↓</a>
+        <a class="btn btn-glass" href="privacy.html">Our privacy promise</a>
       </div>
-    </section>
+      <p class="play-note up">Coming soon to Google Play for Android.</p>
+    </div>
 
-    <section class="card">
-      <h2>Open Food Facts</h2>
-      <p>Product lookups go directly from your phone to Open Food Facts, a non-profit open database. Each request contains the barcode, the app's name and version, and the technical data every internet request includes, such as your IP address.</p>
-      <p>Open Food Facts privacy policy: <a href="https://world.openfoodfacts.org/privacy">world.openfoodfacts.org/privacy</a></p>
-    </section>
+    <div class="stage" aria-hidden="true">
+      <div class="barcode"></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="scanline"></div>
+          <div class="p-hero">
+            <div class="p-photo">
+              <svg width="58" height="66" viewBox="0 0 58 66"><rect x="12" y="2" width="34" height="11" rx="3" fill="#fff" stroke="#E2E2DC"/><rect x="5" y="12" width="48" height="52" rx="12" fill="#5B3320"/><rect x="5" y="28" width="48" height="18" fill="#D81E18"/><text x="29" y="41" font-family="Figtree" font-weight="900" font-size="10" fill="#fff" text-anchor="middle">SPREAD</text></svg>
+            </div>
+            <div class="p-name">Hazelnut spread</div>
+            <div class="p-meta">400 g · scanned just now</div>
+            <div class="p-pills"><span class="p-pill"><i></i>Nutri-Score E</span><span class="p-pill"><i></i>NOVA 4</span></div>
+          </div>
+          <div class="p-card verdict">
+            <div class="ring"><span>E</span></div>
+            <div><div class="v-title">Enjoy occasionally</div><div class="v-sub">Ultra-processed · High sugar · High saturated fat</div></div>
+          </div>
+          <div class="p-card meters">
+            <h4>Per 100 g <span>539 kcal</span></h4>
+            <div class="m-row"><div class="m-top">Sugars 56.3 g <b style="color:var(--red)">High</b></div><div class="m-bar"><i style="width:96%;background:var(--red);animation-delay:.9s"></i></div></div>
+            <div class="m-row"><div class="m-top">Saturated fat 10.6 g <b style="color:var(--red)">High</b></div><div class="m-bar"><i style="width:82%;background:var(--red);animation-delay:1.05s"></i></div></div>
+            <div class="m-row"><div class="m-top">Salt 0.11 g <b style="color:#1C8B3C">Low</b></div><div class="m-bar"><i style="width:8%;background:var(--green);animation-delay:1.2s"></i></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card fc-expiry"><small>USE BEFORE</small><strong>APR 2028</strong><em>Batch DOBS3456 · 19 months left</em></div>
+      <div class="float-card fc-code mono">INS 322 → <b>Lecithin</b></div>
+    </div>
+  </div>
+</header>
 
-    <section class="card">
-      <h2>Google AdMob ads</h2>
-      <p>Truth shows ads served by Google AdMob:</p>
-      <ul>
-        <li>a banner at the bottom of product pages,</li>
-        <li>a sponsored card in your scan history, and</li>
-        <li>occasionally, a full-screen ad when you leave a product page.</li>
-      </ul>
-      <p>Google may collect and use your phone's advertising ID, IP address and information about how you interact with ads, to serve ads, personalise them where you have agreed, and measure them.</p>
-      <ul>
-        <li>In the European Economic Area, the UK and Switzerland, the app asks for your consent with Google's consent tool before any ad is requested. In regions with other privacy laws, such as some US states, it shows the choices those laws require.</li>
-        <li>You can change your choice at any time in the app: <b>About &amp; privacy → Privacy options for ads</b> (shown where it applies).</li>
-        <li>You can reset or delete your advertising ID in Android <b>Settings → Google → Ads</b>.</li>
-      </ul>
-      <p>How Google uses data: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
-    </section>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Nutri-Score A · Better choice</span><span>NOVA 4 · Ultra-processed</span><span>Expired Jan 2025 · Don't use it</span><span>INS 471 → Mono- and diglycerides</span><span>Contains: milk, nuts</span><span>Batch HH2291 · Use before Nov 2027</span><span>Beauty &amp; personal care · Ingredients listed</span><span>High sugar · 56 g per 100 g</span>
+    <span>Nutri-Score A · Better choice</span><span>NOVA 4 · Ultra-processed</span><span>Expired Jan 2025 · Don't use it</span><span>INS 471 → Mono- and diglycerides</span><span>Contains: milk, nuts</span><span>Batch HH2291 · Use before Nov 2027</span><span>Beauty &amp; personal care · Ingredients listed</span><span>High sugar · 56 g per 100 g</span>
+  </div>
+</div>
 
-    <section class="card">
-      <h2>Your choices</h2>
-      <ul>
-        <li><b>Delete your history:</b> in History, swipe a scan away, or long-press to select several and delete them, or use About &amp; privacy → Clear scan history. Uninstalling the app also deletes it.</li>
-        <li><b>Camera:</b> you can refuse camera permission and type barcodes instead.</li>
-        <li><b>Ads:</b> see the Google AdMob section above.</li>
-      </ul>
-      <p>Because we hold no data about you, there is nothing for us to access, correct or delete on our side. For data held by Google or Open Food Facts, use their policies linked above, or contact us and we will help.</p>
-    </section>
+<main>
+  <section id="features" class="wrap">
+    <p class="eyebrow reveal">What Truth shows</p>
+    <h2 class="reveal">One scan. The whole story.</h2>
+    <div class="bento">
+      <article class="tile t-verdict reveal">
+        <div>
+          <h3>A verdict you can read in a glance.</h3>
+          <p>Nutri-Score, NOVA processing level and sugar become one plain answer: Better choice, Moderate or Enjoy occasionally. The reasons are always shown.</p>
+        </div>
+        <div class="grades" aria-hidden="true">
+          <span style="background:#30D158">A</span><span style="background:#9BE15D">B</span><span style="background:#FFD60A">C</span><span style="background:#FF9F0A">D</span><span style="background:#FF453A">E</span>
+        </div>
+      </article>
+      <article class="tile t-med reveal">
+        <h3>Medicines, down to the batch.</h3>
+        <p>Reads the QR or Data Matrix on the pack for batch, manufacture and expiry. Expired packs turn red.</p>
+        <div class="exp"><small>EXPIRED</small><strong>JAN 2025</strong></div>
+      </article>
+      <article class="tile t-ingr reveal">
+        <h3>Ingredients, explained.</h3>
+        <p>E-numbers and additives spelled out in plain words, with allergens highlighted, for food, supplements and cosmetics.</p>
+        <div class="codes"><span><b>E322</b>Lecithin</span><span><b>E471</b>Emulsifier</span><span><b>E330</b>Citric acid</span><span><b>E464</b>Capsule shell</span></div>
+      </article>
+      <article class="tile t-private reveal">
+        <h3>Private by design.</h3>
+        <p>No account, no login, no server of ours. Your scan history lives only on your phone, and you can delete one scan or many at once.</p>
+        <div class="lock" aria-hidden="true">✓</div>
+      </article>
+      <article class="tile t-kinds reveal">
+        <h3 style="margin:0">Works on more than food.</h3>
+        <div class="kinds"><span>Food &amp; drinks</span><span>Supplements</span><span>Medicines</span><span>Cosmetics</span><span>Pet food</span><span>Household</span></div>
+      </article>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>Children</h2>
-      <p>Truth is not designed for children under 13, and we do not knowingly collect their data.</p>
-    </section>
+  <section id="how" class="wrap">
+    <p class="eyebrow reveal">How it works</p>
+    <h2 class="reveal">Point. Scan. Know.</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h3>Point the camera</h3><p>At a barcode, QR code or Data Matrix. No camera handy? Type the number.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>Get the verdict</h3><p>Rating, nutrients, ingredients and pack dates arrive in about a second, straight from the open Open Food Facts database.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>Come back to it</h3><p>Every scan is saved on your phone. Filter by type, swipe one away, or select many and delete them together.</p></div>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>Not medical advice</h2>
-      <p>Ratings and product details are for general information only. They are not medical, dietary or nutritional advice. The data comes from a crowd-sourced database and can be incomplete or wrong. Always check the product's packaging, especially for allergens.</p>
-    </section>
+  <div class="wrap band">
+    <div class="band-card reveal">
+      <div class="big" aria-hidden="true">yours.</div>
+      <div>
+        <h2>Your scans stay yours.</h2>
+        <p>Truth has no accounts and no servers. Barcodes go to Open Food Facts, a non-profit open database, only to look products up. Ads come from Google AdMob, and where the law requires it you choose what it may use.</p>
+      </div>
+      <a class="btn btn-ink" href="privacy.html">Read the privacy policy →</a>
+    </div>
+  </div>
+</main>
 
-    <section class="card">
-      <h2>Changes to this policy</h2>
-      <p>We may update this policy. The "Last updated" date above shows the latest version.</p>
-      <p class="muted">Contact: <a href="mailto:omrwor41@gmail.com">omrwor41@gmail.com</a></p>
-    </section>
-  </main>
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <a class="brand" href="./" aria-label="Truth home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#1C1C20"/><circle cx="28" cy="28" r="15" fill="none" stroke="#D4FF3A" stroke-width="5.5"/><path d="M39 39 L50 50" stroke="#D4FF3A" stroke-width="7" stroke-linecap="round"/><path d="M21 28.5 L26.5 33.5 L35.5 23" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="wordmark">truth<b>.</b></span>
+      </a>
+      <div class="f-links">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="mailto:omrwor41@gmail.com">omrwor41@gmail.com</a>
+        <a href="https://world.openfoodfacts.org">Data: Open Food Facts</a>
+      </div>
+    </div>
+    <p class="f-big" aria-hidden="true">truth<b>.</b></p>
+    <div class="f-small">
+      <span>© 2026 Truth. Product data from Open Food Facts, available under the Open Database License.</span>
+      <span>Not medical advice. Always check the packaging.</span>
+    </div>
+  </div>
+</footer>
 
-  <footer>© 2026 Truth</footer>
+<script>
+  // Fade sections in as they scroll into view; everything stays visible without JavaScript.
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </body>
 </html>
