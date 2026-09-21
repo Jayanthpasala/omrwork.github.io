@@ -137,12 +137,17 @@
   .codes span { background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; }
   .codes span b { font-family: "JetBrains Mono", monospace; font-weight: 700; margin-right: 6px; }
   .t-private { grid-column: span 3; background: #DFF5E6; }
+  .t-missing { grid-column: span 6; background: var(--ink); color: var(--paper); display: grid;
+    grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: center; }
+  .t-missing h3 { margin: 0; }
+  .t-missing p { color: var(--on-ink-2); }
   .lock { position: absolute; right: -20px; bottom: -30px; font-size: 180px; line-height: 1; opacity: .12; font-weight: 900; }
   .t-kinds { grid-column: span 6; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
   .kinds { display: flex; flex-wrap: wrap; gap: 10px; }
   .kinds span { border: 1.5px solid var(--ink); border-radius: 999px; padding: 10px 18px; font-weight: 700; }
   @media (max-width: 960px) {
-    .t-verdict, .t-med, .t-ingr, .t-private, .t-kinds { grid-column: span 6; }
+    .t-verdict, .t-med, .t-ingr, .t-private, .t-missing, .t-kinds { grid-column: span 6; }
+    .t-missing { grid-template-columns: 1fr; gap: 12px; }
     .t-verdict { grid-template-columns: 1fr; min-height: 0; }
   }
 
@@ -299,8 +304,12 @@
       </article>
       <article class="tile t-private reveal">
         <h3>Private by design.</h3>
-        <p>No account, no login, no server of ours. Your scan history lives only on your phone, and you can delete one scan or many at once.</p>
+        <p>No account, no login, no server of ours. Your scan history lives only on your phone, and you can delete one scan or many at once. Photos leave your phone only if you choose to add a missing product.</p>
         <div class="lock" aria-hidden="true">✓</div>
+      </article>
+      <article class="tile t-missing reveal">
+        <h3>Missing? Add it in a minute.</h3>
+        <p>If a barcode isn't in the database yet, photograph the pack and publish it to Open Food Facts from inside Truth. You check every detail first, and the next person who scans it finds it.</p>
       </article>
       <article class="tile t-kinds reveal">
         <h3 style="margin:0">Works on more than food.</h3>
