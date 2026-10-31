@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Truth</title>
+<meta name="description" content="About Truth: Food &amp; Label Scanner. Published under the name FreeLabs Studio, operated by PASALA JAYANTH, an individual developer in Chennai, India.">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230B0B0C'/%3E%3Ccircle cx='28' cy='28' r='15' fill='none' stroke='%23D4FF3A' stroke-width='5.5'/%3E%3Cpath d='M39 39 L50 50' stroke='%23D4FF3A' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M21 28.5 L26.5 33.5 L35.5 23' fill='none' stroke='%23fff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0B0B0C; --glass: #1C1C20; --paper: #F2F2EF; --card: #FFFFFF;
+    --volt: #D4FF3A; --muted: #5C5C58; --on-ink-2: rgba(242,242,239,.66); --link: #1F4E86;
+    --pad: clamp(20px, 5vw, 64px); --max: 960px; --radius: 28px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Figtree, system-ui, sans-serif; font-size: 17px; line-height: 1.6; overflow-x: hidden; }
+  a { color: var(--link); text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(11,11,12,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.06); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--paper); }
+  .brand svg { width: 36px; height: 36px; flex: none; }
+  .wordmark { font-weight: 900; font-size: 26px; letter-spacing: -.03em; line-height: 1; }
+  .wordmark b { color: var(--volt); }
+  .back { color: var(--on-ink-2); text-decoration: none; font-weight: 600; font-size: 15px; }
+  .back:hover { color: var(--paper); }
+
+  .hero { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; isolation: isolate; }
+  .hero::before { content: ""; position: absolute; right: -10%; top: -30%; width: 60%; height: 140%; z-index: -1; background: radial-gradient(closest-side, rgba(212,255,58,.16), transparent 70%); }
+  .hero .wrap { padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(48px, 6vw, 88px); }
+  .stamp { display: inline-flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid rgba(255,255,255,.08); font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--volt); box-shadow: 0 0 0 4px rgba(212,255,58,.18); flex: none; }
+  h1 { font-size: clamp(52px, 9vw, 104px); line-height: .9; letter-spacing: -.055em; font-weight: 900; margin: 22px 0 22px; }
+  .lede { font-size: clamp(18px, 1.8vw, 22px); color: var(--on-ink-2); max-width: 44ch; margin: 0; }
+
+  .sections { display: grid; gap: 18px; padding-top: clamp(40px, 5vw, 72px); }
+  .card { background: var(--card); border-radius: var(--radius); padding: clamp(24px, 3.4vw, 44px); box-shadow: 0 18px 40px -28px rgba(0,0,0,.2); }
+  .card h2 { font-size: clamp(28px, 3.2vw, 40px); font-weight: 900; letter-spacing: -.035em; line-height: 1.05; margin: 0 0 18px; }
+  .card p { margin: 0 0 12px; }
+  .card p:last-child { margin-bottom: 0; }
+  .get { background: var(--volt); }
+  .get a { color: var(--ink); font-weight: 800; }
+  .btn { display: inline-flex; margin-top: 8px; background: var(--ink); color: var(--paper) !important; text-decoration: none; padding: 16px 24px; border-radius: 999px; font-weight: 800; }
+
+  footer { background: var(--ink); color: rgba(242,242,239,.5); margin-top: clamp(56px, 8vw, 96px); padding: 36px 0; font-size: 14px; }
+  footer a { color: rgba(242,242,239,.75); }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Truth home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#1C1C20"/><circle cx="28" cy="28" r="15" fill="none" stroke="#D4FF3A" stroke-width="5.5"/><path d="M39 39 L50 50" stroke="#D4FF3A" stroke-width="7" stroke-linecap="round"/><path d="M21 28.5 L26.5 33.5 L35.5 23" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="wordmark">truth<b>.</b></span>
+    </a>
+    <a class="back" href="./">← Back to Truth</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="stamp"><span class="dot"></span>By FreeLabs Studio</span>
+    <h1>About Truth</h1>
+    <p class="lede">What the app is, who makes it and how it is funded.</p>
+  </div>
+</header>
+
+<main class="wrap sections">
+  <section class="card" id="what">
+    <h2>What Truth is</h2>
+    <p>Truth: Food &amp; Label Scanner is an Android app on Google Play (package <b>com.foodscanrate.app</b>). It scans barcodes and shows nutrition and processing scores using data from <a href="https://world.openfoodfacts.org">Open Food Facts</a>. Photos users add are published to Open Food Facts.</p>
+  </section>
+
+  <section class="card" id="who">
+    <h2>Who makes it</h2>
+    <p>Truth is published under the name FreeLabs Studio, which is operated by PASALA JAYANTH, an individual developer based in Chennai, Tamil Nadu, India. FreeLabs Studio is not a registered company.</p>
+    <p>To get in touch, see the <a href="contact.html">contact page</a>.</p>
+  </section>
+
+  <section class="card" id="funding">
+    <h2>How it's funded</h2>
+    <p>Truth is a free app supported by ads from Google AdMob. The <a href="privacy.html">privacy policy</a> explains how ads and data work.</p>
+  </section>
+
+  <section class="card get" id="get">
+    <h2>Get Truth</h2>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener">Get it on Google Play</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 FreeLabs Studio · Operated by PASALA JAYANTH, Chennai, India · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:omrwork41@gmail.com">omrwork41@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
