@@ -62,7 +62,6 @@
   .app-icon { width: 56px; height: 56px; border-radius: 14px; display: block; }
   .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 800 17px/1 Figtree, sans-serif; padding: 18px 26px; border-radius: 999px; text-decoration: none; transition: transform .15s ease, background .2s; }
-  .btn:active { transform: scale(.97); }
   .btn-glass { background: var(--glass); color: var(--paper); border: 1px solid rgba(255,255,255,.1); }
   .btn-glass:hover { background: #26262B; }
   .btn-ink { background: var(--ink); color: var(--paper); }
@@ -141,8 +140,7 @@
 
   /* ---------- tiles ---------- */
   .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
-  .tile { background: var(--card); border-radius: var(--radius); padding: clamp(24px, 3vw, 36px); position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 18px 40px -24px rgba(0,0,0,.18); transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
-  .tile:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -28px rgba(0,0,0,.28); }
+  .tile { background: var(--card); border-radius: var(--radius); padding: clamp(24px, 3vw, 36px); position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 18px 40px -24px rgba(0,0,0,.18); }
   .tile h3 { font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -.03em; line-height: 1.05; margin: 0 0 12px; font-weight: 900; }
   .tile p { margin: 0; color: var(--muted); max-width: 42ch; }
   .t-verdict { grid-column: span 4; background: var(--ink); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
@@ -254,7 +252,7 @@
   .cta-card p.note { margin: 18px 0 0; color: var(--on-ink-2); }
 
   /* ---------- reveal ---------- */
-  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1), translate .22s cubic-bezier(.2,.8,.2,1), scale .18s, box-shadow .22s; }
   .js .reveal.in { opacity: 1; transform: none; }
   .hero .up { animation: up .9s cubic-bezier(.2,.8,.2,1) both; }
   .hero .up:nth-child(2) { animation-delay: .08s; } .hero .up:nth-child(3) { animation-delay: .16s; } .hero .up:nth-child(4) { animation-delay: .24s; } .hero .up:nth-child(5) { animation-delay: .32s; }
