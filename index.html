@@ -6,12 +6,26 @@
 <title>Truth: See what's really inside</title>
 <meta name="description" content="Truth by FreeLabs Studio scans barcodes and QR codes: a clear verdict on food, whether it fits your diet and allergies, better choices, and batch and expiry on medicines. Free, no account.">
 <meta name="theme-color" content="#0B0B0C">
+<link rel="canonical" href="https://truth.freefinance.site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Truth">
 <meta property="og:title" content="Truth: See what's really inside">
 <meta property="og:description" content="Scan any barcode. Get the verdict, the ingredients and the expiry, in about a second.">
+<meta property="og:url" content="https://truth.freefinance.site/">
+<meta property="og:image" content="https://truth.freefinance.site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Truth logo beside the Truth app's scan screen, with the words See what's really inside">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230B0B0C'/%3E%3Ccircle cx='28' cy='28' r='15' fill='none' stroke='%23D4FF3A' stroke-width='5.5'/%3E%3Cpath d='M39 39 L50 50' stroke='%23D4FF3A' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M21 28.5 L26.5 33.5 L35.5 23' fill='none' stroke='%23fff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
 <style>
   :root {
     --ink: #0B0B0C; --ink-2: #141416; --glass: #1C1C20; --paper: #F2F2EF; --card: #FFFFFF;
@@ -24,25 +38,9 @@
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body { margin: 0; background: var(--paper); color: var(--ink); font-family: Figtree, system-ui, sans-serif; font-size: 17px; line-height: 1.55; overflow-x: hidden; }
   a { color: inherit; }
-  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
-  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
-
-  /* ---------- nav ---------- */
-  .nav { position: sticky; top: 0; z-index: 20; background: rgba(11,11,12,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.06); }
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--paper); }
-  .brand svg { width: 36px; height: 36px; flex: none; }
-  .wordmark { font-weight: 900; font-size: 26px; letter-spacing: -.03em; line-height: 1; }
-  .wordmark b { color: var(--volt); font-weight: 900; }
-  .by { font-size: 12px; font-weight: 600; color: var(--on-ink-2); letter-spacing: .02em; padding-left: 10px; margin-left: 2px; border-left: 1px solid rgba(255,255,255,.16); line-height: 1.2; }
-  .by b { color: var(--paper); font-weight: 800; display: block; }
-  @media (max-width: 420px) { .by { display: none; } }
-  .nav-links { display: flex; align-items: center; gap: 28px; }
-  .nav-links a.link { color: var(--on-ink-2); text-decoration: none; font-weight: 500; font-size: 15px; transition: color .2s; }
-  .nav-links a.link:hover { color: var(--paper); }
-  .chip-soon { display: inline-flex; align-items: center; gap: 8px; background: var(--volt); color: var(--ink); font-weight: 800; font-size: 14px; padding: 10px 16px; border-radius: 999px; white-space: nowrap; text-decoration: none; }
-  @media (max-width: 720px) { .nav-links a.link { display: none; } .chip-soon { font-size: 13px; padding: 8px 12px; } }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--pad); }
+  .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+  .ic { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 
   /* ---------- hero ---------- */
   .hero { position: relative; background: var(--ink); color: var(--paper); overflow: hidden; isolation: isolate; }
@@ -55,22 +53,21 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 48px; padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(64px, 9vw, 128px); }
-  .badge { display: inline-flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid rgba(255,255,255,.08); color: var(--paper); font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--volt); box-shadow: 0 0 0 4px rgba(212,255,58,.18); flex: none; }
+  .badge { display: inline-flex; align-items: center; gap: 12px; background: var(--glass); border: 1px solid rgba(255,255,255,.08); color: var(--paper); font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; }
   h1 { font-size: clamp(54px, 9.4vw, 138px); line-height: .9; letter-spacing: -.055em; font-weight: 900; margin: 26px 0 26px; }
   h1 .hl { position: relative; white-space: nowrap; }
   h1 .hl::after { content: ""; position: absolute; left: .02em; right: .04em; bottom: .06em; height: .12em; background: var(--volt); border-radius: 999px; transform-origin: left; animation: draw 1s .7s cubic-bezier(.2,.8,.2,1) both; z-index: -1; }
-  .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--on-ink-2); max-width: 34ch; margin: 0 0 34px; }
-  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--on-ink-2); max-width: 38ch; margin: 0 0 30px; }
+  .get-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .app-icon { width: 56px; height: 56px; border-radius: 14px; display: block; }
+  .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 800 17px/1 Figtree, sans-serif; padding: 18px 26px; border-radius: 999px; text-decoration: none; transition: transform .15s ease, background .2s; }
   .btn:active { transform: scale(.97); }
-  .btn-volt { background: var(--volt); color: var(--ink); }
-  .btn-volt:hover { background: #E4FF7A; }
   .btn-glass { background: var(--glass); color: var(--paper); border: 1px solid rgba(255,255,255,.1); }
   .btn-glass:hover { background: #26262B; }
   .btn-ink { background: var(--ink); color: var(--paper); }
   .btn-ink:hover { background: #26262B; }
-  .play-note { margin: 16px 0 0; font-size: 14px; color: rgba(242,242,239,.45); }
+  .play-note { margin: 16px 0 0; font-size: 14px; color: rgba(242,242,239,.66); }
 
   /* ---------- phone ---------- */
   .stage { position: relative; display: grid; place-items: center; min-height: 600px; }
@@ -83,20 +80,17 @@
   .notch { position: absolute; top: 12px; left: 50%; width: 92px; height: 24px; margin-left: -46px; border-radius: 20px; background: #000; z-index: 3; }
   .p-hero { border-radius: 26px; padding: 12px 12px 14px; text-align: center; background: linear-gradient(180deg, #FFE1DC, var(--paper)); }
   .p-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
-  .p-top .ic { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,.85); display: grid; place-items: center; font-size: 12px; font-weight: 900; }
+  .p-top .tap { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,.85); display: grid; place-items: center; font-size: 12px; font-weight: 900; }
   .p-top .sp { flex: 1; }
   .p-top .cmp { background: var(--ink); color: #fff; font-size: 10.5px; font-weight: 800; border-radius: 999px; padding: 5px 9px; display: inline-flex; gap: 4px; align-items: center; }
   .p-top .cmp i { color: var(--volt); font-style: normal; }
   .p-better { align-self: flex-start; background: #E0F6E6; color: #1B6B36; border: 1px solid rgba(48,209,88,.5); border-radius: 999px; padding: 6px 11px; font-size: 11.5px; font-weight: 800; display: inline-flex; gap: 6px; align-items: center; animation: up .8s 1.6s cubic-bezier(.2,.8,.2,1) both; }
-  .fc-diet { right: -9%; top: 47%; transform: rotate(6deg); animation: float 9s .4s ease-in-out infinite; }
-  .fc-diet small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: rgba(242,242,239,.55); }
-  .fc-diet strong { display: block; font-size: 20px; font-weight: 900; letter-spacing: -.02em; color: var(--red); line-height: 1.15; }
-  .fc-diet em { font-style: normal; font-size: 12px; color: rgba(242,242,239,.6); }
+  .p-better .ic { width: 14px; height: 14px; }
   .p-photo { width: 84px; height: 84px; margin: 2px auto 10px; border-radius: 26px; background: #fff; display: grid; place-items: center; box-shadow: 0 14px 30px -10px rgba(255,69,58,.45); }
   .p-name { font-weight: 900; font-size: 19px; letter-spacing: -.02em; line-height: 1.1; }
   .p-meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
   .p-pills { display: flex; gap: 6px; justify-content: center; margin-top: 9px; }
-  .p-pill { font-size: 11px; font-weight: 700; background: #fff; border-radius: 999px; padding: 5px 9px; display: inline-flex; gap: 5px; align-items: center; }
+  .p-pill { font-size: 11px; font-weight: 800; background: #fff; border-radius: 999px; padding: 5px 9px; display: inline-flex; gap: 5px; align-items: center; }
   .p-pill i { width: 6px; height: 6px; border-radius: 50%; background: var(--red); display: inline-block; }
   .p-card { background: #fff; border-radius: 22px; padding: 12px; }
   .verdict { display: flex; align-items: center; gap: 12px; }
@@ -107,7 +101,7 @@
   .v-title { font-weight: 900; font-size: 16px; color: #B3261E; letter-spacing: -.01em; line-height: 1.15; }
   .v-sub { font-size: 11px; color: var(--muted); line-height: 1.35; margin-top: 3px; }
   .meters h4 { margin: 0 0 8px; font-size: 14px; font-weight: 900; display: flex; justify-content: space-between; }
-  .meters h4 span { font-weight: 500; color: var(--muted); font-size: 12px; }
+  .meters h4 span { font-weight: 400; color: var(--muted); font-size: 12px; }
   .m-row { margin-top: 9px; }
   .m-top { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 600; }
   .m-top b { font-weight: 900; }
@@ -116,75 +110,86 @@
   .scanline { position: absolute; left: 14px; right: 14px; height: 3px; border-radius: 3px; background: var(--volt); z-index: 4;
     box-shadow: 0 0 18px 4px rgba(212,255,58,.55); animation: sweep 3.2s ease-in-out infinite; }
   .float-card { position: absolute; z-index: 5; background: var(--ink-2); border: 1px solid rgba(255,255,255,.1); color: var(--paper); border-radius: 20px; padding: 14px 16px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
+  .float-card small { display: block; font-size: 11px; font-weight: 800; letter-spacing: .12em; color: rgba(242,242,239,.62); }
+  .float-card em { font-style: normal; font-size: 12px; color: rgba(242,242,239,.66); }
   .fc-expiry { left: -8%; bottom: 13%; transform: rotate(-5deg); animation: float 8s 1s ease-in-out infinite; }
-  .fc-expiry small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: rgba(242,242,239,.55); }
   .fc-expiry strong { display: block; font-size: 34px; font-weight: 900; letter-spacing: -.03em; color: var(--volt); line-height: 1.05; }
-  .fc-expiry em { font-style: normal; font-size: 12px; color: rgba(242,242,239,.6); }
+  .fc-diet { right: -9%; top: 47%; transform: rotate(6deg); animation: float 9s .4s ease-in-out infinite; }
+  .fc-diet strong { display: block; font-size: 20px; font-weight: 900; letter-spacing: -.02em; color: var(--red); line-height: 1.15; }
 
   /* ---------- ticker ---------- */
   .ticker { background: var(--volt); color: var(--ink); overflow: hidden; border-block: 1px solid var(--ink); }
   .ticker-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
   .ticker-track span { display: inline-flex; align-items: center; gap: 18px; padding: 18px 0 18px 18px; font-weight: 800; font-size: 18px; white-space: nowrap; letter-spacing: -.01em; }
-  .ticker-track span::after { content: "✳"; font-size: 16px; }
+  .ticker-track span::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); }
 
-  /* ---------- features (bento) ---------- */
-  section { padding: clamp(72px, 10vw, 128px) 0 0; }
+  /* ---------- sections ---------- */
+  section.wrap { padding-top: clamp(72px, 10vw, 128px); scroll-margin-top: 16px; }
   h2 { font-size: clamp(38px, 6vw, 76px); line-height: .96; letter-spacing: -.045em; font-weight: 900; margin: 0 0 clamp(32px, 4vw, 56px); max-width: 16ch; }
+
+  /* ---------- screenshots ---------- */
+  .strip { list-style: none; margin: 0 calc(var(--pad) * -1); padding: 8px var(--pad) 28px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .strip li { flex: 0 0 72vw; max-width: 300px; scroll-snap-align: center; margin: 0; }
+  .strip figure { margin: 0; }
+  .strip img { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 28px; background: var(--ink); box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 18px 40px -24px rgba(0,0,0,.45); }
+  .strip figcaption { margin-top: 12px; font-size: 15px; font-weight: 600; color: var(--muted); text-align: center; }
+  @media (min-width: 960px) {
+    .strip { justify-content: safe center; }
+    .strip li { flex-basis: 250px; }
+  }
+
+  /* ---------- tiles ---------- */
   .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
   .tile { background: var(--card); border-radius: var(--radius); padding: clamp(24px, 3vw, 36px); position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 18px 40px -24px rgba(0,0,0,.18); transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
   .tile:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -28px rgba(0,0,0,.28); }
   .tile h3 { font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -.03em; line-height: 1.05; margin: 0 0 12px; font-weight: 900; }
   .tile p { margin: 0; color: var(--muted); max-width: 42ch; }
-  .t-verdict { grid-column: span 4; background: var(--ink); color: var(--paper); min-height: 380px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+  .t-verdict { grid-column: span 4; background: var(--ink); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
   .t-verdict p { color: var(--on-ink-2); }
-  .grades { display: flex; gap: 8px; align-self: start; }
-  .grades span { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; font-weight: 900; font-size: 28px; color: var(--ink); }
+  .scale { display: block; width: 100%; max-width: 520px; height: auto; }
   .t-med { grid-column: span 2; background: #FFE3DF; }
   .t-med .exp { margin-top: 26px; background: var(--ink); color: var(--paper); border-radius: 20px; padding: 16px 18px; }
-  .t-med .exp small { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: rgba(242,242,239,.55); }
+  .t-med .exp small { font-size: 11px; font-weight: 800; letter-spacing: .14em; color: rgba(242,242,239,.62); }
   .t-med .exp strong { display: block; font-size: 36px; font-weight: 900; color: var(--red); letter-spacing: -.03em; line-height: 1.1; }
   .t-ingr { grid-column: span 3; background: #E3ECF6; }
   .codes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
   .codes span { background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; }
-  .codes span b { font-family: "JetBrains Mono", monospace; font-weight: 700; margin-right: 6px; }
+  .codes span b { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 800; margin-right: 6px; }
   .t-private { grid-column: span 3; background: #DFF5E6; }
-  .t-missing { grid-column: span 6; background: var(--ink); color: var(--paper); display: grid;
-    grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: center; }
+  .t-private p { position: relative; }
+  .lock { position: absolute; right: -24px; bottom: -28px; width: 170px; height: 170px; opacity: .09; stroke-width: 1.5; }
+  .t-missing { grid-column: span 6; background: var(--ink); color: var(--paper); display: grid; grid-template-columns: 1fr 1.2fr; gap: 12px 32px; align-items: start; }
   .t-missing h3 { margin: 0; }
   .t-missing p { color: var(--on-ink-2); }
-  .lock { position: absolute; right: -20px; bottom: -30px; font-size: 180px; line-height: 1; opacity: .12; font-weight: 900; }
   .t-kinds { grid-column: span 6; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
   .kinds { display: flex; flex-wrap: wrap; gap: 10px; }
-  .kinds span { border: 1.5px solid var(--ink); border-radius: 999px; padding: 10px 18px; font-weight: 700; }
-  @media (max-width: 960px) {
-    .t-verdict, .t-med, .t-ingr, .t-private, .t-missing, .t-kinds { grid-column: span 6; }
-    .t-missing { grid-template-columns: 1fr; gap: 12px; }
-    .t-verdict { grid-template-columns: 1fr; min-height: 0; }
-  }
+  .kinds span { border: 1.5px solid var(--ink); border-radius: 999px; padding: 9px 16px 9px 13px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; }
+  .kinds .ic { width: 19px; height: 19px; }
 
   /* ---------- what's new ---------- */
   .new-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; margin-bottom: clamp(32px, 4vw, 56px); }
   .new-head h2 { margin: 0; }
-  .soon { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--paper); font-size: 14px; font-weight: 700; padding: 10px 16px; border-radius: 999px; }
+  .soon { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: var(--paper); font-size: 14px; font-weight: 800; padding: 10px 16px; border-radius: 999px; }
   .t-diet { grid-column: span 3; }
   .t-better { grid-column: span 3; background: #DFF5E6; }
   .t-compare { grid-column: span 2; background: var(--ink); color: var(--paper); }
   .t-compare p { color: var(--on-ink-2); }
   .t-share { grid-column: span 2; background: var(--volt); }
-  .t-share p { color: rgba(11,11,12,.7); }
+  .t-share p { color: rgba(11,11,12,.72); }
   .t-shelf { grid-column: span 2; background: #FFF0D6; }
-  .mini { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .pill { border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+  .mini { margin-top: 24px; background: var(--ink); border-radius: 22px; padding: 12px; display: flex; flex-wrap: wrap; gap: 8px; width: fit-content; max-width: 100%; }
+  .pill { border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; }
   .pill i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
-  .pill.out { border: 1.5px solid var(--ink); }
   .pill.ok { background: #E0F6E6; color: #1B6B36; } .pill.ok i { background: var(--green); }
   .pill.may { background: #FFF0D6; color: #8A5200; } .pill.may i { background: var(--amber); }
   .pill.no { background: #FFE3DF; color: #B3261E; } .pill.no i { background: var(--red); }
   .alts { margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .alt { background: #fff; border-radius: 18px; padding: 12px; font-size: 13.5px; font-weight: 700; line-height: 1.25; position: relative; }
-  .alt .g { position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 14px; }
-  .alt .img { height: 54px; border-radius: 12px; background: var(--paper); margin-bottom: 10px; }
-  .alt small { display: block; font-weight: 500; color: var(--muted); margin-top: 2px; }
+  .alt { background: #fff; border-radius: 18px; padding: 12px; font-size: 14px; font-weight: 800; line-height: 1.25; position: relative; }
+  .alt .g { position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; color: var(--ink); font-weight: 900; font-size: 14px; }
+  .alt .img { height: 64px; border-radius: 12px; background: var(--paper); margin-bottom: 10px; display: grid; place-items: center; color: var(--muted); }
+  .alt .img svg { width: 42px; height: 42px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .alt small { display: block; font-weight: 600; color: var(--muted); margin-top: 2px; font-size: 12.5px; }
   .cmp-rows { margin-top: 22px; font-size: 14px; }
   .cmp-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 8px; padding: 8px 0; border-top: 1px solid rgba(255,255,255,.1); }
   .cmp-row span:first-child { color: var(--on-ink-2); }
@@ -196,21 +201,41 @@
   .share-mock .top span { display: inline-block; margin-top: 8px; background: #E0F6E6; color: #1B6B36; font-weight: 800; font-size: 12px; padding: 5px 10px; border-radius: 999px; }
   .share-mock .foot { background: var(--ink); color: #fff; padding: 9px 14px; font-weight: 900; display: flex; justify-content: space-between; align-items: center; font-size: 15px; }
   .share-mock .foot b { color: var(--volt); }
-  .share-mock .foot small { font-size: 10px; font-weight: 600; opacity: .75; }
+  .share-mock .foot small { font-size: 10px; font-weight: 600; opacity: .8; }
   .soon-row { margin-top: 22px; background: var(--ink); color: var(--paper); border-radius: 20px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-  .soon-row small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: rgba(242,242,239,.55); }
+  .soon-row small { display: block; font-size: 11px; font-weight: 800; letter-spacing: .12em; color: rgba(242,242,239,.62); }
   .soon-row strong { font-size: 24px; font-weight: 900; color: var(--amber); letter-spacing: -.02em; }
-  @media (max-width: 960px) { .t-diet, .t-better, .t-compare, .t-share, .t-shelf { grid-column: span 6; } }
-  @media (max-width: 480px) { .alts { grid-template-columns: 1fr 1fr; } .alts .alt:nth-child(3) { display: none; } }
+  .soon-row span { font-weight: 800; }
+  @media (max-width: 960px) {
+    .t-verdict, .t-med, .t-ingr, .t-private, .t-missing, .t-kinds, .t-diet, .t-better, .t-compare, .t-share, .t-shelf { grid-column: span 6; }
+    .t-missing { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .alts { grid-template-columns: 1fr; }
+    .alt { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; padding-right: 44px; }
+    .alt .img { margin: 0; height: 56px; }
+    .alt .g { top: 50%; margin-top: -13px; }
+  }
 
   /* ---------- steps ---------- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: s; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .step { border-top: 2px solid var(--ink); padding-top: 22px; }
   .step .n { font-size: clamp(64px, 7vw, 104px); font-weight: 900; line-height: .9; letter-spacing: -.06em; -webkit-text-stroke: 2px var(--ink); color: transparent; margin-bottom: 18px; transition: color .3s; }
   .step:hover .n { color: var(--volt); }
   .step h3 { font-size: 26px; letter-spacing: -.03em; margin: 0 0 8px; font-weight: 900; }
   .step p { margin: 0; color: var(--muted); max-width: 34ch; }
+  .credit { margin: 28px 0 0; color: var(--muted); }
+  .credit a { color: var(--ink); font-weight: 800; }
   @media (max-width: 820px) { .steps { grid-template-columns: 1fr; gap: 36px; } }
+
+  /* ---------- FAQ ---------- */
+  .faq { display: grid; gap: 10px; max-width: 860px; }
+  .faq details { background: var(--card); border-radius: 22px; box-shadow: 0 18px 40px -30px rgba(0,0,0,.25); }
+  .faq summary { cursor: pointer; list-style: none; padding: 20px 24px; font-weight: 800; font-size: 19px; letter-spacing: -.01em; display: flex; justify-content: space-between; align-items: center; gap: 16px; border-radius: 22px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: ""; width: 11px; height: 11px; border-right: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink); transform: rotate(45deg) translate(-2px, -2px); transition: transform .2s; flex: none; }
+  .faq details[open] summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+  .faq p { margin: 0; padding: 0 24px 22px; color: var(--muted); max-width: 66ch; }
 
   /* ---------- privacy band ---------- */
   .band { margin-top: clamp(72px, 10vw, 128px); }
@@ -220,21 +245,17 @@
   .band-card .big { position: absolute; right: -2%; top: -18%; font-size: clamp(160px, 22vw, 320px); font-weight: 900; letter-spacing: -.08em; line-height: 1; opacity: .08; pointer-events: none; }
   @media (max-width: 820px) { .band-card { grid-template-columns: 1fr; } }
 
-  /* ---------- footer ---------- */
-  footer { background: var(--ink); color: var(--paper); margin-top: clamp(72px, 10vw, 128px); padding: 56px 0 40px; }
-  .f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
-  .f-line { flex-basis: 100%; color: rgba(242,242,239,.6); }
-  .f-line a { color: rgba(242,242,239,.8); }
-  .f-big { font-size: clamp(56px, 12vw, 180px); font-weight: 900; letter-spacing: -.06em; line-height: .85; margin: 48px 0 0; color: var(--paper); }
-  .f-big b { color: var(--volt); }
-  .f-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
-  .f-links a { color: var(--on-ink-2); text-decoration: none; font-weight: 500; }
-  .f-links a:hover { color: var(--paper); }
-  .f-small { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; color: rgba(242,242,239,.4); font-size: 14px; }
+  /* ---------- final call to action ---------- */
+  .cta { margin-top: 18px; }
+  .cta-card { background: var(--ink); color: var(--paper); border-radius: 40px; padding: clamp(32px, 5vw, 72px); position: relative; overflow: hidden; isolation: isolate; }
+  .cta-card::before { content: ""; position: absolute; right: -10%; top: -40%; width: 60%; height: 180%; z-index: -1; background: radial-gradient(closest-side, rgba(212,255,58,.16), transparent 70%); }
+  .cta-card .eyebrow { color: rgba(242,242,239,.66); }
+  .cta-card h2 { margin-bottom: 26px; }
+  .cta-card p.note { margin: 18px 0 0; color: var(--on-ink-2); }
 
   /* ---------- reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
-  .reveal.in { opacity: 1; transform: none; }
+  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
   .hero .up { animation: up .9s cubic-bezier(.2,.8,.2,1) both; }
   .hero .up:nth-child(2) { animation-delay: .08s; } .hero .up:nth-child(3) { animation-delay: .16s; } .hero .up:nth-child(4) { animation-delay: .24s; } .hero .up:nth-child(5) { animation-delay: .32s; }
 
@@ -254,30 +275,48 @@
   }
   @media (max-width: 420px) {
     .phone { transform: rotate(3deg) scale(.9); }
-    .fc-expiry { left: -4px; bottom: 6%; } .fc-diet { right: -4px; top: 50%; }
-    .btn { width: 100%; }
+    .fc-expiry { left: -4px; bottom: 6%; }
+    .fc-diet { display: none; } /* it would cover the verdict */
+    .badge { font-size: 12.5px; gap: 10px; padding: 8px 12px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
-    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+    .ticker-track { animation: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
     .scanline { display: none; }
   }
 </style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
     <a class="brand" href="./" aria-label="Truth home, by FreeLabs Studio">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#1C1C20"/><circle cx="28" cy="28" r="15" fill="none" stroke="#D4FF3A" stroke-width="5.5"/><path d="M39 39 L50 50" stroke="#D4FF3A" stroke-width="7" stroke-linecap="round"/><path d="M21 28.5 L26.5 33.5 L35.5 23" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="wordmark">truth<b>.</b></span>
-      <span class="by">by<b>FreeLabs Studio</b></span>
+      <span class="brand-text"><span class="wordmark">truth<b>.</b></span><span class="by">by <b>FreeLabs</b> <i>Studio</i></span></span>
     </a>
     <div class="nav-links">
       <a class="link" href="#new">What's new</a>
       <a class="link" href="#how">How it works</a>
+      <a class="link" href="#faq">FAQ</a>
+      <a class="link" href="about.html">About</a>
+      <a class="link" href="contact.html">Contact</a>
       <a class="link" href="privacy.html">Privacy</a>
-      <a class="chip-soon" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener"><span class="dot" style="background:var(--ink);box-shadow:none"></span>Get it on Google Play</a>
+      <a class="chip-play" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener"><span class="dot"></span><span class="long">Get it on Google Play</span><span class="short">Get the app</span></a>
+      <details class="menu">
+        <summary aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+        <div class="menu-panel">
+          <a href="#new">What's new</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
+      </details>
     </div>
   </div>
 </nav>
@@ -285,12 +324,15 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="badge up"><span class="dot"></span>By FreeLabs Studio · Free · No account</span>
+      <span class="badge up"><span class="dot"></span>Food &amp; label scanner for Android · Free · No account</span>
       <h1 class="up">See what's <span class="hl">really</span> inside.</h1>
-      <p class="lede up">Scan any barcode or QR code. Get a straight verdict on food, whether it fits your diet, better choices, and the batch and expiry on medicines, in about a second.</p>
+      <p class="lede up">Scan a barcode to get a plain verdict on food: Nutri-Score, how processed it is, and what's in it. Plus batch and expiry dates on medicines.</p>
       <div class="ctas up">
-        <a class="btn btn-volt" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener">Get it on Google Play</a>
-        <a class="btn btn-glass" href="#features">See what it shows ↓</a>
+        <span class="get-row">
+          <img class="app-icon" src="assets/icon-96.webp" width="56" height="56" alt="Truth app icon">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener"><img src="assets/google-play-badge.png" width="215" height="83" alt="Get it on Google Play"></a>
+        </span>
+        <a class="btn btn-glass" href="#screens">See the app ↓</a>
       </div>
       <p class="play-note up">Free on Google Play for Android. No account needed.</p>
     </div>
@@ -302,7 +344,7 @@
           <div class="notch"></div>
           <div class="scanline"></div>
           <div class="p-hero">
-            <div class="p-top"><span class="ic">‹</span><span class="sp"></span><span class="cmp"><i>⇄</i>Compare</span><span class="ic">↗</span></div>
+            <div class="p-top"><span class="tap">‹</span><span class="sp"></span><span class="cmp"><i>⇄</i>Compare</span><span class="tap">↗</span></div>
             <div class="p-photo">
               <svg width="58" height="66" viewBox="0 0 58 66"><rect x="12" y="2" width="34" height="11" rx="3" fill="#fff" stroke="#E2E2DC"/><rect x="5" y="12" width="48" height="52" rx="12" fill="#5B3320"/><rect x="5" y="28" width="48" height="18" fill="#D81E18"/><text x="29" y="41" font-family="Figtree" font-weight="900" font-size="10" fill="#fff" text-anchor="middle">SPREAD</text></svg>
             </div>
@@ -314,12 +356,12 @@
             <div class="ring"><span>E</span></div>
             <div><div class="v-title">Enjoy occasionally</div><div class="v-sub">Ultra-processed · High sugar · High saturated fat</div></div>
           </div>
-          <div class="p-better">👍 3 better choices ↓</div>
+          <div class="p-better"><svg class="ic" viewBox="0 0 24 24"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>3 better choices ↓</div>
           <div class="p-card meters">
             <h4>Per 100 g <span>539 kcal</span></h4>
-            <div class="m-row"><div class="m-top">Sugars 56.3 g <b style="color:var(--red)">High</b></div><div class="m-bar"><i style="width:96%;background:var(--red);animation-delay:.9s"></i></div></div>
-            <div class="m-row"><div class="m-top">Saturated fat 10.6 g <b style="color:var(--red)">High</b></div><div class="m-bar"><i style="width:82%;background:var(--red);animation-delay:1.05s"></i></div></div>
-            <div class="m-row"><div class="m-top">Salt 0.11 g <b style="color:#1C8B3C">Low</b></div><div class="m-bar"><i style="width:8%;background:var(--green);animation-delay:1.2s"></i></div></div>
+            <div class="m-row"><div class="m-top">Sugars 56.3 g <b style="color:#B3261E">High</b></div><div class="m-bar"><i style="width:96%;background:var(--red);animation-delay:.9s"></i></div></div>
+            <div class="m-row"><div class="m-top">Saturated fat 10.6 g <b style="color:#B3261E">High</b></div><div class="m-bar"><i style="width:82%;background:var(--red);animation-delay:1.05s"></i></div></div>
+            <div class="m-row"><div class="m-top">Salt 0.11 g <b style="color:#1B6B36">Low</b></div><div class="m-bar"><i style="width:8%;background:var(--green);animation-delay:1.2s"></i></div></div>
           </div>
         </div>
       </div>
@@ -331,61 +373,24 @@
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>Nutri-Score A · Better choice</span><span>Jain · Not for you · contains garlic</span><span>3 better choices ↓</span><span>NOVA 4 · Ultra-processed</span><span>Expires in 9 days</span><span>INS 471 → Mono- and diglycerides</span><span>Vegetarian · Fits</span><span>Makhana wins 6 of 6</span><span>Contains: milk, nuts</span><span>Batch HH2291 · Use before Nov 2027</span>
-    <span>Nutri-Score A · Better choice</span><span>Jain · Not for you · contains garlic</span><span>3 better choices ↓</span><span>NOVA 4 · Ultra-processed</span><span>Expires in 9 days</span><span>INS 471 → Mono- and diglycerides</span><span>Vegetarian · Fits</span><span>Makhana wins 6 of 6</span><span>Contains: milk, nuts</span><span>Batch HH2291 · Use before Nov 2027</span>
+    <span>Point. Scan. Know.</span><span>Does it fit your diet?</span><span>Spot ultra-processed food</span><span>Allergens flagged</span><span>Find a better choice</span><span>Compare two products</span><span>Know what expires next</span><span>Batch and expiry on medicines</span><span>Share the verdict on WhatsApp</span><span>No account needed</span>
+    <span>Point. Scan. Know.</span><span>Does it fit your diet?</span><span>Spot ultra-processed food</span><span>Allergens flagged</span><span>Find a better choice</span><span>Compare two products</span><span>Know what expires next</span><span>Batch and expiry on medicines</span><span>Share the verdict on WhatsApp</span><span>No account needed</span>
   </div>
 </div>
 
-<main>
-  <section id="new" class="wrap">
-    <div class="new-head">
-      <div>
-        <p class="eyebrow reveal">New in Truth 1.3</p>
-        <h2 class="reveal">Made for how you eat.</h2>
-      </div>
-      <span class="soon reveal"><span class="dot"></span>Rolling out in the next update</span>
-    </div>
-    <div class="bento">
-      <article class="tile t-diet reveal">
-        <h3>Your diet &amp; allergies, checked on every scan.</h3>
-        <p>Set it once: vegetarian (no egg), eggetarian, vegan or Jain, plus allergies like milk, gluten or peanuts. Every food page then tells you if it fits. If the data can't tell, Truth says so instead of guessing.</p>
-        <div class="mini">
-          <span class="pill ok"><i></i>Fits</span><span class="pill may"><i></i>May contain</span><span class="pill no"><i></i>Not for you</span>
-        </div>
-      </article>
-      <article class="tile t-better reveal">
-        <h3>Better choices, right on the page.</h3>
-        <p>Similar products sold in India with a better Nutri-Score, best first. A hint at the top tells you how many there are, so you don't have to scroll to find out.</p>
-        <div class="alts" aria-hidden="true">
-          <div class="alt"><div class="img"></div><span class="g" style="background:#30D158">A</span>Classic Bourbon<small>Bonn</small></div>
-          <div class="alt"><div class="img"></div><span class="g" style="background:#30D158">B</span>Butter cookies<small>Milk Ma</small></div>
-          <div class="alt"><div class="img"></div><span class="g" style="background:#FF9F0A">C</span>Marie Gold<small>Britannia</small></div>
-        </div>
-      </article>
-      <article class="tile t-compare reveal">
-        <h3>Compare two products.</h3>
-        <p>Scan a second product, or pick one you've scanned before, and see who wins on each line.</p>
-        <div class="cmp-rows" aria-hidden="true">
-          <div class="cmp-row"><span>Nutri-Score</span><span>E</span><span class="win">B ✓</span></div>
-          <div class="cmp-row"><span>Sat. fat</span><span>12 g</span><span class="win">2 g ✓</span></div>
-          <div class="cmp-row"><span>Protein</span><span>6 g</span><span class="win">10 g ✓</span></div>
-        </div>
-        <div class="cmp-sum">Makhana is better on 6 of 6</div>
-      </article>
-      <article class="tile t-share reveal">
-        <h3>Share it as a picture.</h3>
-        <p>Send a product's verdict, key numbers and allergens to family on WhatsApp in one tap.</p>
-        <div class="share-mock" aria-hidden="true">
-          <div class="top"><b>Roasted makhana</b><span>✓ Better choice</span></div>
-          <div class="foot"><span>truth<b>.</b></span><small>Check any food label</small></div>
-        </div>
-      </article>
-      <article class="tile t-shelf reveal">
-        <h3>My shelf, with expiring soon.</h3>
-        <p>Your scans now live on My shelf. Packs about to expire sit at the top, counted down in days.</p>
-        <div class="soon-row"><div><small>EXPIRES IN</small><strong>9 days</strong></div><span style="font-weight:700">Atta, 5 kg</span></div>
-      </article>
-    </div>
+<main id="content">
+  <section id="screens" class="wrap">
+    <p class="eyebrow reveal">Inside the app</p>
+    <h2 class="reveal">See it before you install.</h2>
+    <ul class="strip reveal" tabindex="0" aria-label="Truth app screenshots, scroll sideways">
+      <li><figure><img src="assets/screens/expiry-360.webp" srcset="assets/screens/expiry-360.webp 360w, assets/screens/expiry-720.webp 720w" sizes="(min-width: 960px) 250px, min(72vw, 300px)" width="360" height="640" loading="lazy" decoding="async" alt="Truth app showing a Use before date of 27 Dec 2026 on a scanned drink"><figcaption>See every expiry at a glance</figcaption></figure></li>
+      <li><figure><img src="assets/screens/history-360.webp" srcset="assets/screens/history-360.webp 360w, assets/screens/history-720.webp 720w" sizes="(min-width: 960px) 250px, min(72vw, 300px)" width="360" height="640" loading="lazy" decoding="async" alt="Truth app listing four scanned products saved on the phone, with their ratings"><figcaption>Your scans stay on your phone</figcaption></figure></li>
+      <li><figure><img src="assets/screens/scan-360.webp" srcset="assets/screens/scan-360.webp 360w, assets/screens/scan-720.webp 720w" sizes="(min-width: 960px) 250px, min(72vw, 300px)" width="360" height="640" loading="lazy" decoding="async" alt="Truth scan screen with a camera frame and a box to type a barcode number"><figcaption>Scan any product in a second</figcaption></figure></li>
+      <li><figure><img src="assets/screens/verdict-360.webp" srcset="assets/screens/verdict-360.webp 360w, assets/screens/verdict-720.webp 720w" sizes="(min-width: 960px) 250px, min(72vw, 300px)" width="360" height="640" loading="lazy" decoding="async" alt="Truth product page with a Nutri-Score E verdict reading Enjoy occasionally"><figcaption>One clear verdict, in plain words</figcaption></figure></li>
+      <li><figure><img src="assets/screens/ingredients-360.webp" srcset="assets/screens/ingredients-360.webp 360w, assets/screens/ingredients-720.webp 720w" sizes="(min-width: 960px) 250px, min(72vw, 300px)" width="360" height="640" loading="lazy" decoding="async" alt="Truth product page for a hair oil, listing its ingredients"><figcaption>Every ingredient, explained</figcaption></figure></li>
+      <li><figure><img src="assets/screens/label-360.webp" srcset="assets/screens/label-360.webp 360w, assets/screens/label-720.webp 720w" sizes="(min-width: 960px) 250px, min(72vw, 300px)" width="360" height="640" loading="lazy" decoding="async" alt="Truth form with ingredients and nutrition filled in from a photo of a label"><figcaption>Snap the label, it fills itself in</figcaption></figure></li>
+      <li><figure><img src="assets/screens/reminder-360.webp" srcset="assets/screens/reminder-360.webp 360w, assets/screens/reminder-720.webp 720w" sizes="(min-width: 960px) 250px, min(72vw, 300px)" width="360" height="640" loading="lazy" decoding="async" alt="Truth asking whether to remind you before a pack expires"><figcaption>Get reminded before it expires</figcaption></figure></li>
+    </ul>
   </section>
 
   <section id="features" class="wrap">
@@ -397,9 +402,15 @@
           <h3>A verdict you can read in a glance.</h3>
           <p>Nutri-Score, NOVA processing level and sugar become one plain answer: Better choice, Moderate or Enjoy occasionally. The reasons are always shown.</p>
         </div>
-        <div class="grades" aria-hidden="true">
-          <span style="background:#30D158">A</span><span style="background:#9BE15D">B</span><span style="background:#FFD60A">C</span><span style="background:#FF9F0A">D</span><span style="background:#FF453A">E</span>
-        </div>
+        <svg class="scale" viewBox="0 0 340 78" role="img" aria-label="Nutri-Score scale from A in green to E in red, with B highlighted">
+          <g font-family="Figtree, sans-serif" font-weight="900" font-size="26" text-anchor="middle" fill="#0B0B0C">
+            <rect x="0" y="16" width="62" height="54" rx="14" fill="#30D158"/><text x="31" y="52">A</text>
+            <rect x="66" y="4" width="72" height="72" rx="18" fill="#9BE15D" stroke="#D4FF3A" stroke-width="3"/><text x="102" y="51" font-size="36">B</text>
+            <rect x="142" y="16" width="62" height="54" rx="14" fill="#FFD60A"/><text x="173" y="52">C</text>
+            <rect x="208" y="16" width="62" height="54" rx="14" fill="#FF9F0A"/><text x="239" y="52">D</text>
+            <rect x="274" y="16" width="62" height="54" rx="14" fill="#FF453A"/><text x="305" y="52">E</text>
+          </g>
+        </svg>
       </article>
       <article class="tile t-med reveal">
         <h3>Medicines, down to the batch.</h3>
@@ -414,7 +425,7 @@
       <article class="tile t-private reveal">
         <h3>Private by design.</h3>
         <p>No account, no login. Your scan history lives only on your phone, and you can delete one scan or many at once. Barcodes go to Open Food Facts to look products up. Photos leave your phone only to read hard-to-read print, or when you choose to add a product.</p>
-        <div class="lock" aria-hidden="true">✓</div>
+        <svg class="ic lock" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
       </article>
       <article class="tile t-missing reveal">
         <h3>Missing? Add it in a minute.</h3>
@@ -422,7 +433,65 @@
       </article>
       <article class="tile t-kinds reveal">
         <h3 style="margin:0">Works on more than food.</h3>
-        <div class="kinds"><span>Food &amp; drinks</span><span>Supplements</span><span>Medicines</span><span>Cosmetics</span><span>Pet food</span><span>Household</span></div>
+        <div class="kinds">
+          <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>Food &amp; drinks</span>
+          <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>Supplements</span>
+          <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg>Medicines</span>
+          <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>Cosmetics</span>
+          <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg>Pet food</span>
+          <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Household</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="new" class="wrap">
+    <div class="new-head">
+      <div>
+        <p class="eyebrow reveal">New in Truth 1.3</p>
+        <h2 class="reveal">Made for how you eat.</h2>
+      </div>
+      <span class="soon reveal"><span class="dot"></span>Available now</span>
+    </div>
+    <div class="bento">
+      <article class="tile t-diet reveal">
+        <h3>Your diet &amp; allergies, checked on every scan.</h3>
+        <p>Set it once: vegetarian (no egg), eggetarian, vegan or Jain, plus allergies like milk, gluten or peanuts. Every food page then tells you if it fits. If the data can't tell, Truth says so instead of guessing.</p>
+        <div class="mini">
+          <span class="pill ok"><i></i>Fits</span><span class="pill may"><i></i>May contain</span><span class="pill no"><i></i>Not for you</span>
+        </div>
+      </article>
+      <article class="tile t-better reveal">
+        <h3>Better choices, right on the page.</h3>
+        <p>Similar products sold in India with a better Nutri-Score, best first. A hint at the top tells you how many there are, so you don't have to scroll to find out.</p>
+        <div class="alts" aria-hidden="true">
+          <div class="alt"><div class="img"><svg viewBox="0 0 48 48"><path d="M12 8h24l-2 5 2 5-2 6 2 6-2 6 2 4H12l2-4-2-6 2-6-2-6 2-5z"/><path d="M19 18h10M19 24h10M19 30h6"/></svg></div><span class="g" style="background:#30D158">A</span><div>Oat cookies<small>Example</small></div></div>
+          <div class="alt"><div class="img"><svg viewBox="0 0 48 48"><rect x="15" y="6" width="18" height="7" rx="2"/><path d="M14 13h20a3 3 0 0 1 3 3v24a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3V16a3 3 0 0 1 3-3z"/><path d="M11 24h26M11 34h26"/></svg></div><span class="g" style="background:#9BE15D">B</span><div>Peanut butter<small>Example</small></div></div>
+          <div class="alt"><div class="img"><svg viewBox="0 0 48 48"><path d="M10 14 24 7l14 7v22l-14 7-14-7z"/><path d="m10 14 14 7 14-7"/><path d="M24 21v22"/></svg></div><span class="g" style="background:#FFD60A">C</span><div>Marie biscuits<small>Example</small></div></div>
+        </div>
+      </article>
+      <article class="tile t-compare reveal">
+        <h3>Compare two products.</h3>
+        <p>Scan a second product, or pick one you've scanned before, and see who wins on each line.</p>
+        <div class="cmp-rows" aria-hidden="true">
+          <div class="cmp-row"><span>Nutri-Score</span><span>E</span><span class="win">B ✓</span></div>
+          <div class="cmp-row"><span>Sat. fat</span><span>12 g</span><span class="win">2 g ✓</span></div>
+          <div class="cmp-row"><span>Protein</span><span>6 g</span><span class="win">10 g ✓</span></div>
+        </div>
+        <div class="cmp-sum">Makhana is better on 6 of 6</div>
+      </article>
+      <article class="tile t-share reveal on-volt">
+        <h3>Share it as a picture.</h3>
+        <p>Send a product's verdict, key numbers and allergens to family on WhatsApp in one tap.</p>
+        <div class="share-mock" aria-hidden="true">
+          <div class="top"><b>Roasted makhana</b><span>✓ Better choice</span></div>
+          <div class="foot"><span>truth<b>.</b></span><small>Check any food label</small></div>
+        </div>
+      </article>
+      <article class="tile t-shelf reveal">
+        <h3>My shelf, with expiring soon.</h3>
+        <p>Your scans now live on My shelf. Packs about to expire sit at the top, counted down in days.</p>
+        <div class="soon-row"><div><small>EXPIRES IN</small><strong>9 days</strong></div><span>Atta, 5 kg</span></div>
       </article>
     </div>
   </section>
@@ -435,16 +504,42 @@
       <div class="step reveal"><div class="n">02</div><h3>Get the verdict</h3><p>Rating, nutrients, ingredients and pack dates arrive in about a second, straight from the open Open Food Facts database.</p></div>
       <div class="step reveal"><div class="n">03</div><h3>Come back to it</h3><p>Every scan is saved on your phone. Filter by type, swipe one away, or select many and delete them together.</p></div>
     </div>
+    <p class="credit reveal">Data: <a href="https://world.openfoodfacts.org">Open Food Facts</a>, a non-profit open database.</p>
+  </section>
+
+  <section id="faq" class="wrap">
+    <p class="eyebrow reveal">FAQ</p>
+    <h2 class="reveal">Good questions.</h2>
+    <div class="faq reveal">
+      <details><summary>Is Truth free?</summary><p>Yes. Truth is free on Google Play, with no purchases or subscriptions. It is supported by ads.</p></details>
+      <details><summary>Where does the data come from?</summary><p>From Open Food Facts, a non-profit open database built by people around the world. It can be incomplete or out of date, so always check the pack.</p></details>
+      <details><summary>Does it work on Indian products?</summary><p>Yes, if the product is in Open Food Facts. Many are, but not all. If yours is missing, you can add it with a few photos from inside Truth.</p></details>
+      <details><summary>Why are there ads?</summary><p>Ads from Google AdMob keep the app free. The <a href="privacy.html">privacy policy</a> explains what they collect and the choices you have.</p></details>
+      <details><summary>Do I need an account?</summary><p>No. There is no login, and your scan history stays on your phone.</p></details>
+      <details><summary>Is this medical advice?</summary><p>No. Ratings and product details are general information only. Always check the packaging, especially for allergies, and ask a doctor or pharmacist about your health.</p></details>
+    </div>
   </section>
 
   <div class="wrap band">
-    <div class="band-card reveal">
+    <div class="band-card reveal on-volt">
       <div class="big" aria-hidden="true">yours.</div>
       <div>
         <h2>Your scans stay yours.</h2>
         <p>Truth has no accounts and keeps no data about you. Barcodes go to Open Food Facts, a non-profit open database, to look products up. Hard-to-read photos pass briefly through our text-reading helper, which stores nothing. Ads come from Google AdMob, which collects your advertising ID and app usage, and where the law requires it you choose what it may use.</p>
       </div>
       <a class="btn btn-ink" href="privacy.html">Read the privacy policy →</a>
+    </div>
+  </div>
+
+  <div class="wrap cta">
+    <div class="cta-card reveal">
+      <p class="eyebrow">Free on Android</p>
+      <h2>Scan your first label.</h2>
+      <span class="get-row">
+        <img class="app-icon" src="assets/icon-96.webp" width="56" height="56" loading="lazy" decoding="async" alt="Truth app icon">
+        <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener"><img src="assets/google-play-badge.png" width="215" height="83" loading="lazy" decoding="async" alt="Get it on Google Play"></a>
+      </span>
+      <p class="note">No account. Your scan history stays on your phone.</p>
     </div>
   </div>
 </main>
@@ -457,31 +552,31 @@
         <span class="wordmark">truth<b>.</b></span>
       </a>
       <div class="f-links">
-        <a href="privacy.html">Privacy policy</a>
-        <a href="mailto:omrwork41@gmail.com">omrwork41@gmail.com</a>
         <a href="https://world.openfoodfacts.org">Data: Open Food Facts</a>
       </div>
     </div>
     <p class="f-big" aria-hidden="true">truth<b>.</b></p>
     <div class="f-small">
       <span class="f-line">© 2026 FreeLabs Studio · Operated by PASALA JAYANTH, Chennai, India · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:omrwork41@gmail.com">omrwork41@gmail.com</a></span>
-      <span>Product data from Open Food Facts, available under the Open Database License.</span>
+      <span>Product data from <a href="https://world.openfoodfacts.org">Open Food Facts</a>, available under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License</a>.</span>
       <span>Not medical advice. Always check the packaging.</span>
+      <span class="f-tm">Google Play and the Google Play logo are trademarks of Google LLC.</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Fade sections in as they scroll into view; everything stays visible without JavaScript.
+  // Fade sections in as they scroll into view; what is already on screen shows at once.
   (function () {
     var items = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('in'); }); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -10% 0px' });
-    items.forEach(function (el) { io.observe(el); });
+    items.forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in'); else io.observe(el);
+    });
   })();
 </script>
-<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </body>
 </html>

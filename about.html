@@ -6,10 +6,25 @@
 <title>About Truth</title>
 <meta name="description" content="About Truth: Food &amp; Label Scanner. Published under the name FreeLabs Studio, operated by PASALA JAYANTH, an individual developer in Chennai, India.">
 <meta name="theme-color" content="#0B0B0C">
+<link rel="canonical" href="https://truth.freefinance.site/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Truth">
+<meta property="og:title" content="About Truth">
+<meta property="og:description" content="About Truth: Food &amp; Label Scanner. Published under the name FreeLabs Studio, operated by PASALA JAYANTH, an individual developer in Chennai, India.">
+<meta property="og:url" content="https://truth.freefinance.site/about.html">
+<meta property="og:image" content="https://truth.freefinance.site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Truth logo beside the Truth app's scan screen, with the words See what's really inside">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230B0B0C'/%3E%3Ccircle cx='28' cy='28' r='15' fill='none' stroke='%23D4FF3A' stroke-width='5.5'/%3E%3Cpath d='M39 39 L50 50' stroke='%23D4FF3A' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M21 28.5 L26.5 33.5 L35.5 23' fill='none' stroke='%23fff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #0B0B0C; --glass: #1C1C20; --paper: #F2F2EF; --card: #FFFFFF;
@@ -22,20 +37,11 @@
   a { color: var(--link); text-underline-offset: 3px; overflow-wrap: anywhere; }
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 
-  .nav { position: sticky; top: 0; z-index: 20; background: rgba(11,11,12,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.06); }
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--paper); }
-  .brand svg { width: 36px; height: 36px; flex: none; }
-  .wordmark { font-weight: 900; font-size: 26px; letter-spacing: -.03em; line-height: 1; }
-  .wordmark b { color: var(--volt); }
-  .back { color: var(--on-ink-2); text-decoration: none; font-weight: 600; font-size: 15px; }
-  .back:hover { color: var(--paper); }
 
   .hero { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; isolation: isolate; }
   .hero::before { content: ""; position: absolute; right: -10%; top: -30%; width: 60%; height: 140%; z-index: -1; background: radial-gradient(closest-side, rgba(212,255,58,.16), transparent 70%); }
   .hero .wrap { padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(48px, 6vw, 88px); }
   .stamp { display: inline-flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid rgba(255,255,255,.08); font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--volt); box-shadow: 0 0 0 4px rgba(212,255,58,.18); flex: none; }
   h1 { font-size: clamp(52px, 9vw, 104px); line-height: .9; letter-spacing: -.055em; font-weight: 900; margin: 22px 0 22px; }
   .lede { font-size: clamp(18px, 1.8vw, 22px); color: var(--on-ink-2); max-width: 44ch; margin: 0; }
 
@@ -45,22 +51,37 @@
   .card p { margin: 0 0 12px; }
   .card p:last-child { margin-bottom: 0; }
   .get { background: var(--volt); }
-  .get a { color: var(--ink); font-weight: 800; }
-  .btn { display: inline-flex; margin-top: 8px; background: var(--ink); color: var(--paper) !important; text-decoration: none; padding: 16px 24px; border-radius: 999px; font-weight: 800; }
 
-  footer { background: var(--ink); color: rgba(242,242,239,.5); margin-top: clamp(56px, 8vw, 96px); padding: 36px 0; font-size: 14px; }
-  footer a { color: rgba(242,242,239,.75); }
 </style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="subpage">
+
+<a class="skip" href="#content">Skip to content</a>
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="./" aria-label="Truth home">
+    <a class="brand" href="./" aria-label="Truth home, by FreeLabs Studio">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#1C1C20"/><circle cx="28" cy="28" r="15" fill="none" stroke="#D4FF3A" stroke-width="5.5"/><path d="M39 39 L50 50" stroke="#D4FF3A" stroke-width="7" stroke-linecap="round"/><path d="M21 28.5 L26.5 33.5 L35.5 23" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="wordmark">truth<b>.</b></span>
+      <span class="brand-text"><span class="wordmark">truth<b>.</b></span><span class="by">by <b>FreeLabs</b> <i>Studio</i></span></span>
     </a>
-    <a class="back" href="./">← Back to Truth</a>
+    <div class="nav-links">
+      <a class="back" href="./">← Back to Truth</a>
+      <a class="link" href="about.html">About</a>
+      <a class="link" href="contact.html">Contact</a>
+      <a class="link" href="privacy.html">Privacy</a>
+      <a class="chip-play" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener"><span class="dot"></span><span class="long">Get it on Google Play</span><span class="short">Get the app</span></a>
+      <details class="menu">
+        <summary aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+        <div class="menu-panel">
+          <a href="./">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener">Get it on Google Play</a>
+        </div>
+      </details>
+    </div>
   </div>
 </nav>
 
@@ -72,7 +93,7 @@
   </div>
 </header>
 
-<main class="wrap sections">
+<main id="content" class="wrap sections">
   <section class="card" id="what">
     <h2>What Truth is</h2>
     <p>Truth: Food &amp; Label Scanner is an Android app on Google Play (package <b>com.foodscanrate.app</b>). It scans barcodes and shows nutrition and processing scores using data from <a href="https://world.openfoodfacts.org">Open Food Facts</a>. Photos users add are published to Open Food Facts.</p>
@@ -89,15 +110,30 @@
     <p>Truth is a free app supported by ads from Google AdMob. The <a href="privacy.html">privacy policy</a> explains how ads and data work.</p>
   </section>
 
-  <section class="card get" id="get">
+  <section class="card get on-volt" id="get">
     <h2>Get Truth</h2>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener">Get it on Google Play</a>
+    <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app" target="_blank" rel="noopener"><img src="assets/google-play-badge.png" width="215" height="83" alt="Get it on Google Play"></a>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 FreeLabs Studio · Operated by PASALA JAYANTH, Chennai, India · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:omrwork41@gmail.com">omrwork41@gmail.com</a></span>
+    <div class="f-top">
+      <a class="brand" href="./" aria-label="Truth home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#1C1C20"/><circle cx="28" cy="28" r="15" fill="none" stroke="#D4FF3A" stroke-width="5.5"/><path d="M39 39 L50 50" stroke="#D4FF3A" stroke-width="7" stroke-linecap="round"/><path d="M21 28.5 L26.5 33.5 L35.5 23" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="wordmark">truth<b>.</b></span>
+      </a>
+      <div class="f-links">
+        <a href="https://world.openfoodfacts.org">Data: Open Food Facts</a>
+      </div>
+    </div>
+    <p class="f-big" aria-hidden="true">truth<b>.</b></p>
+    <div class="f-small">
+      <span class="f-line">© 2026 FreeLabs Studio · Operated by PASALA JAYANTH, Chennai, India · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:omrwork41@gmail.com">omrwork41@gmail.com</a></span>
+      <span>Product data from <a href="https://world.openfoodfacts.org">Open Food Facts</a>, available under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License</a>.</span>
+      <span>Not medical advice. Always check the packaging.</span>
+      <span class="f-tm">Google Play and the Google Play logo are trademarks of Google LLC.</span>
+    </div>
   </div>
 </footer>
 

@@ -1,0 +1,82 @@
+/* Shared by every page: nav, menu, footer, Play badge, focus and skip link. */
+html { scroll-padding-top: 96px; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 40; background: var(--volt); color: var(--ink); font-weight: 800; padding: 10px 16px; border-radius: 12px; text-decoration: none; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--volt); outline-offset: 3px; border-radius: 12px; }
+.on-volt :focus-visible, .chip-play:focus-visible { outline-color: var(--ink); }
+.chip-play:focus-visible { outline-color: var(--paper); }
+
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(11,11,12,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.06); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 72px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--paper); flex: none; }
+.brand svg { width: 38px; height: 38px; flex: none; }
+.brand-text { display: grid; gap: 3px; }
+.wordmark { font-weight: 900; font-size: 25px; letter-spacing: -.03em; line-height: 1; }
+.wordmark b { color: var(--volt); font-weight: 900; }
+.by { font-size: 9.5px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: rgba(242,242,239,.62); line-height: 1; white-space: nowrap; }
+.by b { font-weight: 800; color: var(--paper); }
+.by i { font-style: normal; font-weight: 800; color: var(--volt); }
+
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a.link { color: rgba(242,242,239,.72); text-decoration: none; font-weight: 600; font-size: 15px; transition: color .2s; }
+.nav-links a.link:hover { color: var(--paper); }
+.chip-play { display: inline-flex; align-items: center; gap: 8px; background: var(--volt); color: var(--ink); font-weight: 800; font-size: 14px; padding: 10px 16px; border-radius: 999px; white-space: nowrap; text-decoration: none; }
+.chip-play .short { display: none; }
+.back { color: rgba(242,242,239,.72); text-decoration: none; font-weight: 600; font-size: 15px; white-space: nowrap; display: none; }
+.back:hover { color: var(--paper); }
+
+/* The small blinking dot, as on the scanner's "ready" light. */
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--volt); flex: none; position: relative; animation: blink 1.6s ease-in-out infinite; }
+.dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; background: inherit; opacity: .35; animation: ping 1.6s ease-out infinite; }
+.chip-play .dot { background: var(--ink); }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes ping { 0% { transform: scale(.6); opacity: .5; } 100% { transform: scale(2); opacity: 0; } }
+
+.menu { position: relative; display: none; }
+.menu summary { list-style: none; cursor: pointer; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; color: var(--paper); }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary svg { width: 24px; height: 24px; }
+.menu-panel { position: absolute; right: 0; top: 52px; min-width: 220px; background: var(--ink); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 8px; display: grid; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
+.menu-panel a { color: var(--paper); text-decoration: none; font-weight: 600; padding: 12px 14px; border-radius: 12px; }
+.menu-panel a:hover { background: rgba(255,255,255,.08); }
+
+@media (max-width: 1000px) {
+  .nav-links { gap: 6px; }
+  .nav-links a.link { display: none; }
+  .menu { display: block; }
+  .subpage .chip-play { display: none; }
+  .subpage .back { display: inline; }
+}
+@media (max-width: 420px) {
+  .nav .wrap { gap: 6px; }
+  .brand { gap: 8px; }
+  .nav .brand svg { width: 34px; height: 34px; }
+  .by { letter-spacing: .08em; }
+  .menu summary { width: 40px; }
+  .chip-play { font-size: 13px; padding: 9px 12px; }
+  .chip-play .long { display: none; }
+  .chip-play .short { display: inline; }
+}
+
+/* The PNG carries a clear space of 16% of its height; these margins make the visible badge 56px (48px on phones). */
+.play-badge { display: inline-block; line-height: 0; border-radius: 10px; }
+.play-badge img { display: block; height: 83px; width: auto; margin: -14px; }
+@media (max-width: 420px) { .play-badge img { height: 71px; margin: -12px; } }
+
+footer { background: var(--ink); color: var(--paper); margin-top: clamp(56px, 8vw, 96px); padding: 56px 0 40px; font-size: 14px; }
+footer .wrap { display: block; }
+footer .brand svg { width: 36px; height: 36px; }
+.f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; }
+.f-links { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 16px; }
+.f-links a { color: rgba(242,242,239,.72); text-decoration: none; font-weight: 600; }
+.f-links a:hover { color: var(--paper); }
+.f-big { font-size: clamp(56px, 12vw, 180px); font-weight: 900; letter-spacing: -.06em; line-height: .85; margin: 48px 0 0; color: var(--paper); }
+.f-big b { color: var(--volt); }
+.f-small { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; color: rgba(242,242,239,.66); }
+.f-small a { color: rgba(242,242,239,.86); }
+.f-line, .f-tm { flex-basis: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dot, .dot::after { animation: none; }
+  .dot::after { display: none; }
+}
