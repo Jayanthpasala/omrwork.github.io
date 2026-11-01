@@ -123,7 +123,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="stamp up"><span class="dot"></span>Last updated 31 October 2026</span>
+    <span class="stamp up"><span class="dot"></span>Last updated 1 November 2026</span>
     <h1 class="up">Privacy Policy</h1>
     <p class="lede up"><strong>The short version:</strong> Truth has no accounts, your scan history never leaves your phone, and we keep no photos or data about you.</p>
     <div class="promises up">
@@ -162,7 +162,7 @@
       <h2><span class="num">02</span>In short</h2>
       <ul>
         <li>There is <b>no account and no login</b>. We never ask for your name, email or other personal details.</li>
-        <li>We run one small <b>text-reading helper</b> that reads pack photos when the phone cannot. It stores nothing.</li>
+        <li>We run one small <b>helper</b> that reads pack photos when the phone cannot and, from version 1.4, explains ingredients with AI. It keeps nothing about you.</li>
         <li>Your <b>scan history stays on your phone</b>. It is not uploaded and is excluded from cloud backups and device transfers.</li>
         <li>Photos leave your phone <b>only to be read</b> (printed dates the phone cannot read, or photos you take to add or complete a product) and, for products you add or complete, to be published on Open Food Facts.</li>
         <li>Barcode numbers are sent to <b>Open Food Facts</b> to look up products.</li>
@@ -186,6 +186,7 @@
         <div class="row"><dt>Scan history (My shelf)</dt><dd>Product name, brand, scores and time scanned, stored only on your phone. In the app this list is called My shelf (History in versions before 1.3).<span class="why">Why: so you can see earlier scans, even offline</span></dd></div>
         <div class="row"><dt>Diet &amp; allergies</dt><dd>Only if you set them (version 1.3 and later): your diet and allergies are stored only on your phone and checked against products on your phone. They are never sent anywhere.<span class="why">Why: so each food page can tell you whether it fits</span></dd></div>
         <div class="row"><dt>Better choices</dt><dd>On food pages (version 1.3 and later): the product's category (for example "dry biscuits"), the country (India) and the Nutri-Score grades to look for are sent to Open Food Facts' search (search.openfoodfacts.org, or its main API as a backup). The results are kept on your phone for up to a week and deleted when you delete the scan.<span class="why">Why: to suggest similar products with a better Nutri-Score</span></dd></div>
+        <div class="row"><dt>Ingredient explanations</dt><dd>On food pages (version 1.4 and later): the product's ingredient list and the ingredient names are sent to Truth's helper (see below), with a random ID created on install, used only to limit how often one phone can ask. The barcode and your scan history are not sent. Answers are kept on your phone.<span class="why">Why: to sort the list and explain each ingredient</span></dd></div>
         <div class="row"><dt>Shared product pictures</dt><dd>Only if you tap Share: the picture is made on your phone and handed to the app you choose, such as WhatsApp. Truth itself sends it nowhere.<span class="why">Why: so you can send a product's verdict to someone</span></dd></div>
         <div class="row"><dt>Product photos</dt><dd>Downloaded from images.openfoodfacts.org and kept in the app's cache on your phone for up to 30 days.<span class="why">Why: so photos appear instantly next time</span></dd></div>
         <div class="row"><dt>Scanner diagnostics</dt><dd>Google ML Kit, which reads barcodes and text on your phone, sends Google technical data such as device model, OS version, app version, performance and error codes, with an identifier for this installation. No images or scan contents.<span class="why">Why: so Google can keep the scanner working well</span></dd></div>
@@ -201,11 +202,12 @@
 
     <section class="card" id="reader">
       <h2><span class="num">05</span>Truth's text-reading helper</h2>
-      <p>Some print is too small, curved or faint for the phone to read, such as dates etched on a bottle. Then the app sends the picture to a small helper we run on Cloudflare Workers, which passes it to an AI text-reading model through OpenRouter and returns only the text it found (dates, or the details on a label). It is used only during a scan you started or for photos you took to add or complete a product.</p>
+      <p>Some print is too small, curved or faint for the phone to read, such as dates etched on a bottle. Then the app sends the picture to a small helper we run on Cloudflare Workers, which passes it to an AI text-reading model through OpenRouter and returns only the text it found (dates, or the details on a label). Pictures are sent only during a scan you started or for photos you took to add or complete a product.</p>
+      <p>From version 1.4, the helper also sorts ingredient lists and explains ingredients. On food pages the app sends it the ingredient list and names, which it passes to AI models through OpenRouter.</p>
       <ul>
-        <li><b>What is sent:</b> the picture (for dates, only a black-and-white crop of the date area; product photos shrunk to at most 1280 pixels), plus a random ID created on install, used only to limit how often one phone can ask. No name, account, location or scan history.</li>
-        <li><b>What is kept:</b> we store nothing: no pictures, no results and no logs of what was read.</li>
-        <li><b>Other services:</b> OpenRouter and the model provider handle the picture to read it and may keep request data for a limited time under their own policies (free models may be used to improve them). Don't photograph people, documents or anything personal.</li>
+        <li><b>What is sent:</b> the picture (for dates, only a black-and-white crop of the date area; product photos shrunk to at most 1280 pixels) or the ingredient text, plus a random ID created on install, used only to limit how often one phone can ask. No name, account, location or scan history.</li>
+        <li><b>What is kept:</b> no pictures, no text read from them, and no logs. Sorted ingredient lists and ingredient explanations are saved and shared with everyone who scans the same ingredients, with no link to you or your phone.</li>
+        <li><b>Other services:</b> OpenRouter and the model providers handle the picture or ingredient text and may keep request data for a limited time under their own policies (free models may be used to improve them). Don't photograph people, documents or anything personal.</li>
       </ul>
       <p style="margin-top:16px">Their policies: <a href="https://openrouter.ai/privacy">openrouter.ai/privacy</a> · <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a></p>
     </section>
@@ -235,7 +237,7 @@
         <li><b>Camera:</b> you can refuse camera permission and type barcodes and dates instead.</li>
         <li><b>Reminders:</b> turn expiry reminders or the reminder to scan off in About &amp; privacy, or block Truth's notifications in Android settings.</li>
         <li><b>Adding a product is optional:</b> nothing is published unless you take the photos, check the details and tap publish. Once published it is public under an open licence and cannot be withdrawn by us, though anyone, including you, can edit it on Open Food Facts.</li>
-        <li><b>Online reading only when needed:</b> the text-reading helper is used only during a date scan you started, after the phone could not read the dates itself, or for photos you took to add or complete a product. Typing the dates or details yourself never sends a picture.</li>
+        <li><b>Online reading only when needed:</b> the text-reading helper is used only during a date scan you started, after the phone could not read the dates itself, or for photos you took to add or complete a product. Typing the dates or details yourself never sends a picture. Ingredient text is sent when a food page opens, as described above.</li>
         <li><b>Ads:</b> see the Google AdMob section above.</li>
       </ul>
       <p style="margin-top:16px">Because we hold no data about you, there is nothing for us to access, correct or delete on our side. For data held by Google or Open Food Facts, use their policies linked above, or contact us and we will help.</p>
