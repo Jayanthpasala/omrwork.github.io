@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.foodscanrate.app",
+      "sha256_cert_fingerprints": [
+        "A8:9B:CE:92:E9:DC:83:B5:24:DC:1B:5F:C6:F4:B0:9F:BD:4B:36:95:B0:01:03:C9:1A:D8:F1:F5:3F:D9:57:6B"
+      ]
+    }
+  }
+]

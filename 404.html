@@ -56,10 +56,42 @@
 </nav>
 
 <main id="content" class="wrap">
-  <h1>Page not found.</h1>
-  <p>That page isn't here. The rest of Truth is.</p>
-  <a class="home" href="/">Back to Truth</a>
+  <div id="missing">
+    <h1>Page not found.</h1>
+    <p>That page isn't here. The rest of Truth is.</p>
+    <a class="home" href="/">Back to Truth</a>
+  </div>
+  <!-- Product links from Truth's share cards and QR codes: /p/<barcode>. With Truth installed, Android opens the
+       app before this page loads; this is for everyone else. -->
+  <div id="product" hidden>
+    <h1>See it in Truth.</h1>
+    <p>Someone shared a product with you from Truth, the free food label scanner. <span id="code"></span></p>
+    <a class="home" id="open" href="https://play.google.com/store/apps/details?id=com.foodscanrate.app">Open in Truth</a>
+    <p id="ios" hidden style="margin-top:22px;font-size:16px">Truth is on Android for now. The iPhone version is coming soon.</p>
+  </div>
 </main>
+<script>
+  (function () {
+    var m = location.pathname.match(/^\/p\/(\d{8,14})\/?$/);
+    if (!m) return;
+    var code = m[1];
+    var play = 'https://play.google.com/store/apps/details?id=com.foodscanrate.app';
+    document.title = 'See it in Truth';
+    document.getElementById('missing').hidden = true;
+    document.getElementById('product').hidden = false;
+    document.getElementById('code').textContent = 'Barcode ' + code + '.';
+    var open = document.getElementById('open');
+    if (/Android/i.test(navigator.userAgent)) {
+      // Opens Truth at this product when installed, otherwise Google Play.
+      open.href = 'intent://truth.freefinance.site/p/' + code + '#Intent;scheme=https;package=com.foodscanrate.app;S.browser_fallback_url=' + encodeURIComponent(play) + ';end';
+    } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      open.textContent = 'Get Truth on Google Play';
+      document.getElementById('ios').hidden = false;
+    } else {
+      open.textContent = 'Get Truth on Google Play';
+    }
+  })();
+</script>
 
 <footer>
   <div class="wrap">
