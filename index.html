@@ -133,6 +133,26 @@
   .plan.plus { background: var(--volt); border-color: var(--volt); }
   .plan .fine { font-size: 14px; margin: 22px 0 0; opacity: .75; }
 
+  /* ---------- live buddies (assets/buddies.js) ---------- */
+  .buddy { position: relative; display: inline-block; width: 120px; aspect-ratio: 1; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
+  .buddy .b-art { display: block; width: 100%; height: 100%; transition: transform .2s; }
+  .buddy .b-art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .buddy:hover .b-art { transform: rotate(-4deg) scale(1.04); }
+  .buddy.hop .b-art { animation: hop .6s cubic-bezier(.3,1.6,.5,1); }
+  .buddy .b-say { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 8px) scale(.9); width: max-content; max-width: 230px; background: var(--card); color: var(--ink); font-weight: 800; font-size: 15px; line-height: 1.3; padding: 10px 14px; border-radius: 16px; box-shadow: 0 14px 30px -10px rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity .2s, transform .25s cubic-bezier(.3,1.5,.5,1); z-index: 3; }
+  .buddy .b-say::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -7px; border: 7px solid transparent; border-top-color: var(--card); }
+  .buddy.talking .b-say { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  .b-hero { position: absolute; width: 140px; left: -6%; bottom: -96px; z-index: 4; animation: float 6s ease-in-out infinite; }
+  .b-hero .b-say { background: var(--volt); }
+  .b-hero .b-say::after { border-top-color: var(--volt); }
+  .gang-hint { font-size: 15px !important; font-weight: 700; color: var(--ink) !important; margin: 26px 0 4px; }
+  .gang { display: flex; flex-wrap: wrap; gap: 4px 6px; padding-top: 64px; }
+  .gang .buddy { width: 92px; }
+  .free-head { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+  .free-head .why { margin-top: 14px; color: var(--ink); font-weight: 600; }
+  .b-free { width: 170px; margin-top: 70px; }
+  @keyframes hop { 0% { transform: translateY(0); } 35% { transform: translateY(-26px) rotate(-6deg); } 70% { transform: translateY(0) scale(1.06, .94); } 100% { transform: none; } }
+
   /* ---------- FreeLabs Studio ---------- */
   .studio-card { background: var(--ink); color: var(--paper); border-radius: 36px; padding: clamp(32px, 5vw, 64px); display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
   .studio-card .eyebrow { color: var(--volt); }
@@ -181,6 +201,12 @@
     .apps { justify-content: flex-start; }
     .plans { grid-template-columns: 1fr; }
     .band-card, .studio-card { grid-template-columns: 1fr; gap: 20px; }
+    .free-head { grid-template-columns: 1fr; }
+    .b-free { width: 130px; margin-top: 40px; }
+    .b-hero { width: 104px; left: 0; bottom: -58px; }
+    .b-hero .b-say { left: 8px; transform: translate(0, 8px) scale(.9); transform-origin: left bottom; }
+    .b-hero.talking .b-say { transform: none; }
+    .b-hero .b-say::after { left: 40px; }
   }
   @media (max-width: 560px) {
     .d-front { width: 230px; left: 0; }
@@ -249,6 +275,7 @@
     <div class="stage" aria-hidden="true">
       <div class="glow"></div>
       <figure class="device d-back"><img src="assets/screens/v17/today-360.webp" srcset="assets/screens/v17/today-360.webp 360w, assets/screens/v17/today-720.webp 720w" sizes="250px" width="360" height="780" alt=""></figure>
+      <button class="buddy b-hero" type="button" data-buddy="nimbu" data-hello="Hi! I'm Nimbu. Tap me!" aria-label="Nimbu, your buddy. Tap to hear Nimbu"></button>
       <figure class="device d-front"><img src="assets/screens/v17/hi-360.webp" srcset="assets/screens/v17/hi-360.webp 360w, assets/screens/v17/hi-720.webp 720w" sizes="290px" width="360" height="780" alt=""></figure>
     </div>
   </div>
@@ -327,6 +354,15 @@
       <p class="eyebrow reveal">Your buddy</p>
       <h2 class="reveal">Meet Nimbu.</h2>
       <p class="reveal">Nimbu shows you around, cheers you on and nudges you at the right moments. With Plus, Nimbu brings friends and new looks.</p>
+      <p class="gang-hint reveal">Tap a buddy to say hi.</p>
+      <div class="gang reveal">
+        <button class="buddy" type="button" data-buddy="nimbu" aria-label="Nimbu, free for everyone"></button>
+        <button class="buddy" type="button" data-buddy="aam" aria-label="Aam, the home cook"></button>
+        <button class="buddy" type="button" data-buddy="pudina" aria-label="Pudina, the label reader"></button>
+        <button class="buddy" type="button" data-buddy="jamun" aria-label="Jamun, the walker"></button>
+        <button class="buddy" type="button" data-buddy="anaar" aria-label="Anaar, the runner"></button>
+        <button class="buddy" type="button" data-buddy="badal" aria-label="Badal, the green eater"></button>
+      </div>
     </div>
     <figure class="device reveal"><img src="assets/screens/v17/fight-360.webp" srcset="assets/screens/v17/fight-360.webp 360w, assets/screens/v17/fight-720.webp 720w" sizes="(min-width: 960px) 300px, 70vw" width="360" height="780" loading="lazy" decoding="async" alt="Nimbu and a second buddy playing on Truth's welcome screen"></figure>
   </section>
@@ -347,8 +383,14 @@
 
   <section id="plans" class="wrap">
     <p class="eyebrow reveal">Free and Plus</p>
-    <h2 class="reveal">Almost everything is free.</h2>
-    <p class="sub reveal">Scanning, calories, recipes, steps, walks, phone time and Nimbu are all free, and they stay free. Plus is only for small extras and fun touches, for people who want a little more.</p>
+    <div class="free-head">
+      <div>
+        <h2 class="reveal">Almost everything is free.</h2>
+        <p class="sub reveal">Scanning, calories, recipes, steps, walks, phone time and Nimbu are all free, and they stay free. Plus is only for small extras and fun touches, for people who want a little more.</p>
+        <p class="sub why reveal">Plus also helps us keep Truth running: the servers, the fixes and the new features you get every month.</p>
+      </div>
+      <button class="buddy b-free reveal" type="button" data-buddy="nimbu" data-hello="Almost everything here is free!" aria-label="Nimbu. Tap to hear Nimbu"></button>
+    </div>
     <div class="plans">
       <article class="plan reveal">
         <h3>Free, for everyone</h3>
@@ -380,7 +422,7 @@
     <p class="eyebrow reveal">FAQ</p>
     <h2 class="reveal">Good questions.</h2>
     <div class="faq reveal">
-      <details><summary>Is Truth free?</summary><p>Yes. Almost everything in Truth is free and stays free, supported by ads. Truth Plus is optional: it adds small extras like Progress, more buddies and no ads. You never need it to use Truth, and you can cancel it any time in Google Play.</p></details>
+      <details><summary>Is Truth free?</summary><p>Yes. Almost everything in Truth is free and stays free, supported by ads. Truth Plus is optional: it adds small extras like Progress, more buddies and no ads, and it helps us keep Truth running with servers, fixes and new features. You never need it to use Truth, and you can cancel it any time in Google Play.</p></details>
       <details><summary>Is Truth on iPhone?</summary><p>Not yet. The iPhone version is on its way to the App Store. Truth is available on Android through Google Play today.</p></details>
       <details><summary>Do I need an account?</summary><p>On Android, you sign in once with Google, so your progress is backed up and comes back on a new phone. On iPhone, signing in will be optional. Either way, what you log stays on your phone first, and you can delete your account and backup any time in the app or on the <a href="delete-account.html">account deletion page</a>.</p></details>
       <details><summary>Where does the food data come from?</summary><p>Packaged foods come from Open Food Facts, a non-profit open database built by people around the world. It can be incomplete or out of date, so always check the pack. If a product is missing, you can add it with a few photos from inside Truth.</p></details>
@@ -447,6 +489,7 @@
   </div>
 </footer>
 
+<script src="assets/buddies.js" defer></script>
 <script>
   // Fade sections in as they scroll into view; what is already on screen shows at once.
   (function () {
