@@ -73,8 +73,8 @@
     return '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
       '<ellipse cx="96" cy="188" rx="58" ry="8" fill="#000" fill-opacity=".22"/>' +
       line(134, 134, 172, 172, HANDLE, 22) + line(150, 150, 166, 166, c, 10) +
-      '<ellipse cx="72" cy="172" rx="16" ry="9" fill="' + HANDLE + '"/><ellipse cx="108" cy="174" rx="16" ry="9" fill="' + HANDLE + '"/>' +
-      '<path class="arm" d="M30 104 Q14 116 20 134" fill="none" stroke="' + c + '" stroke-width="11" stroke-linecap="round"/>' +
+      '<g class="f1"><ellipse cx="72" cy="172" rx="16" ry="9" fill="' + HANDLE + '"/></g><g class="f2"><ellipse cx="108" cy="174" rx="16" ry="9" fill="' + HANDLE + '"/></g>' +
+      '<g class="armg"><path class="arm" d="M30 104 Q14 116 20 134" fill="none" stroke="' + c + '" stroke-width="11" stroke-linecap="round"/></g>' +
       '<circle cx="90" cy="96" r="66" fill="' + c + '"/><circle cx="90" cy="96" r="66" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="3"/>' +
       '<circle cx="90" cy="96" r="50" fill="#FFFCF2"/>' +
       '<path d="' + arcPath(90, 96, 40, Math.PI * 1.05, Math.PI * .4) + '" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>' +
@@ -90,22 +90,32 @@
 
   function mount(el) {
     var id = el.getAttribute('data-buddy') || 'nimbu', b = BUDDIES[id];
-    var st = { lookX: 0, lookY: 0, blink: 0, mouth: 0, talkUntil: 0, line: 0 };
+    var st = { lookX: 0, lookY: 0, blink: 0, mouth: 0, talkUntil: 0, line: 0, waveUntil: 0,
+      walk: el.hasAttribute('data-walk') && !reduce, x: 0, dir: 1, pauseUntil: 0, step: 0 };
     el.innerHTML = '<span class="b-art">' + svg(id, st) + '</span><span class="b-say" role="status" aria-live="polite"></span>';
     var art = el.querySelector('.b-art'), say = el.querySelector('.b-say');
+    var svgEl = art.querySelector('svg'), f1 = art.querySelector('.f1'), f2 = art.querySelector('.f2'), armg = art.querySelector('.armg');
     var faceG = function () { return art.querySelector('.face'); };
     var self = {
-      el: el, id: id, st: st,
+      el: el, id: id, st: st, svgEl: svgEl, f1: f1, f2: f2, armg: armg,
       draw: function () { var g = faceG(); if (g) g.innerHTML = face(b, st); },
       talk: function (text) {
+        var snd = el.getAttribute('data-sound');
+        if (snd) { try { var au = new Audio(snd); au.volume = .8; au.play().catch(function () {}); } catch (e) {} }
+        if (el.hasAttribute('data-quiet')) { // just a wave and a chirp, no words
+          st.talkUntil = performance.now() + 450; st.waveUntil = performance.now() + 2000;
+          el.classList.remove('hop'); void el.offsetWidth; el.classList.add('hop');
+          return;
+        }
         say.textContent = text || b.lines[st.line++ % b.lines.length];
         el.classList.add('talking');
         st.talkUntil = performance.now() + 2200;
+        st.waveUntil = performance.now() + 2000;
         el.classList.remove('hop'); void el.offsetWidth; el.classList.add('hop');
         clearTimeout(self.t); self.t = setTimeout(function () { el.classList.remove('talking'); }, 2600);
       }
     };
-    el.addEventListener('click', function () { self.talk(); });
+    el.addEventListener('click', function () { self.talk(el.getAttribute('data-tap') || undefined); });
     el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); self.talk(); } });
     // data-hello: says it once, the first time the buddy comes into view.
     if (el.hasAttribute('data-hello')) {
@@ -127,11 +137,38 @@
 
   window.addEventListener('pointermove', function (e) { pointer = { x: e.clientX, y: e.clientY, t: performance.now() }; }, { passive: true });
 
+  var last = performance.now();
   function frame(now) {
+    var dt = Math.min(.05, (now - last) / 1000); last = now;
     live.forEach(function (o) {
       var r = o.el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > innerHeight) return;
+      var st = o.st, waving = now < st.waveUntil, moving = false;
+      if (st.walk) {
+        // Walk back and forth under the phones; rest a moment at each end; stop to wave when tapped.
+        var room = Math.max(0, o.el.parentElement.clientWidth - o.el.offsetWidth - 20);
+        if (st.x > room) st.x = room; // the window got narrower
+        if (!waving && now > st.pauseUntil) {
+          st.x += st.dir * 70 * dt; moving = true;
+          if (st.x > room) { st.x = room; st.dir = -1; st.pauseUntil = now + 1400; }
+          if (st.x < 0) { st.x = 0; st.dir = 1; st.pauseUntil = now + 1400; }
+          st.step += dt * 9;
+        }
+        o.el.style.transform = 'translateX(' + st.x.toFixed(1) + 'px)';
+        var face = moving ? st.dir : 1;
+        var bob = moving ? -Math.abs(Math.sin(st.step)) * 4 : 0;
+        o.svgEl.style.transform = 'translateY(' + bob.toFixed(1) + 'px) scaleX(' + face + ')';
+        var l1 = moving ? Math.max(0, Math.sin(st.step)) * 9 : 0, l2 = moving ? Math.max(0, -Math.sin(st.step)) * 9 : 0;
+        o.f1.setAttribute('transform', 'translate(' + (moving ? Math.cos(st.step) * 4 : 0).toFixed(1) + ' ' + (-l1).toFixed(1) + ')');
+        o.f2.setAttribute('transform', 'translate(' + (moving ? -Math.cos(st.step) * 4 : 0).toFixed(1) + ' ' + (-l2).toFixed(1) + ')');
+      }
+      // Wave: the arm swings up beside the head and waves.
+      if (waving) {
+        var k = Math.min(1, (st.waveUntil - now) / 250, (2000 - (st.waveUntil - now)) / 250);
+        o.armg.setAttribute('transform', 'rotate(' + (k * (124 + 22 * Math.sin(now / 75))).toFixed(1) + ' 30 104)');
+      } else o.armg.removeAttribute('transform');
       var tx = 0, ty = 0;
+      if (moving) { o.st.lookX += (0.9 - o.st.lookX) * .18; o.st.lookY += (0.1 - o.st.lookY) * .18; o.st.mouth = 0; o.draw(); return; }
       if (pointer && now - pointer.t < 4000) {
         var cx = r.left + r.width * .45, cy = r.top + r.height * .48;
         var dx = pointer.x - cx, dy = pointer.y - cy, d = Math.max(60, Math.hypot(dx, dy));

@@ -142,9 +142,10 @@
   .buddy .b-say { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 8px) scale(.9); width: max-content; max-width: 230px; background: var(--card); color: var(--ink); font-weight: 800; font-size: 15px; line-height: 1.3; padding: 10px 14px; border-radius: 16px; box-shadow: 0 14px 30px -10px rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity .2s, transform .25s cubic-bezier(.3,1.5,.5,1); z-index: 3; }
   .buddy .b-say::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -7px; border: 7px solid transparent; border-top-color: var(--card); }
   .buddy.talking .b-say { opacity: 1; transform: translate(-50%, 0) scale(1); }
-  .b-hero { position: absolute; width: 140px; left: -6%; bottom: -96px; z-index: 4; animation: float 6s ease-in-out infinite; }
-  .b-hero .b-say { background: var(--volt); }
-  .b-hero .b-say::after { border-top-color: var(--volt); }
+  .walkway { position: relative; height: 0; z-index: 5; overflow-x: clip; overflow-y: visible; }
+  .b-walk { position: absolute; left: 0; bottom: -9px; width: 110px; }
+  .b-walk .b-art svg { transform-origin: 45% 50%; }
+  .b-walk:hover .b-art { transform: none; }
   .gang-hint { font-size: 15px !important; font-weight: 700; color: var(--ink) !important; margin: 26px 0 4px; }
   .gang { display: flex; flex-wrap: wrap; gap: 4px 6px; padding-top: 64px; }
   .gang .buddy { width: 92px; }
@@ -203,10 +204,6 @@
     .band-card, .studio-card { grid-template-columns: 1fr; gap: 20px; }
     .free-head { grid-template-columns: 1fr; }
     .b-free { width: 130px; margin-top: 40px; }
-    .b-hero { width: 104px; left: 0; bottom: -58px; }
-    .b-hero .b-say { left: 8px; transform: translate(0, 8px) scale(.9); transform-origin: left bottom; }
-    .b-hero.talking .b-say { transform: none; }
-    .b-hero .b-say::after { left: 40px; }
   }
   @media (max-width: 560px) {
     .d-front { width: 230px; left: 0; }
@@ -275,12 +272,14 @@
     <div class="stage" aria-hidden="true">
       <div class="glow"></div>
       <figure class="device d-back"><img src="assets/screens/v17/today-360.webp" srcset="assets/screens/v17/today-360.webp 360w, assets/screens/v17/today-720.webp 720w" sizes="250px" width="360" height="780" alt=""></figure>
-      <button class="buddy b-hero" type="button" data-buddy="nimbu" data-hello="Hi! I'm Nimbu. Tap me!" aria-label="Nimbu, your buddy. Tap to hear Nimbu"></button>
       <figure class="device d-front"><img src="assets/screens/v17/hi-360.webp" srcset="assets/screens/v17/hi-360.webp 360w, assets/screens/v17/hi-720.webp 720w" sizes="290px" width="360" height="780" alt=""></figure>
     </div>
   </div>
 </header>
 
+<div class="walkway">
+  <button class="buddy b-walk" type="button" data-buddy="nimbu" data-walk data-quiet data-sound="assets/nimbu-hi.mp3" aria-label="Nimbu, your buddy. Tap to say hi"></button>
+</div>
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span>Scan any food</span><span>Count calories</span><span>Cook with what you have</span><span>Walks on a map</span><span>Step rooms</span><span>Reels and shorts counter</span><span>Truth Score</span><span>Meet Nimbu</span>
